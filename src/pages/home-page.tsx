@@ -5,7 +5,7 @@ export const HomePage: FC = (): ReactElement => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    navigate('/signup')
+    void navigate('/signup')
   }, [navigate])
 
   return <></>

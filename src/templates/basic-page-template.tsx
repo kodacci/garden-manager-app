@@ -13,13 +13,13 @@ const StyledContent = styled(Layout.Content)`
   max-width: 600px;
 `
 
-export const BasicPageTemplate: FC<PropsWithChildren> = ({ children }: PropsWithChildren): ReactElement => {
+export const BasicPageTemplate: FC<PropsWithChildren> = ({
+  children,
+}: PropsWithChildren): ReactElement => {
   return (
     <StyledLayout>
-      <Flex align='center' justify='center'>
-        <StyledContent>
-          {children}
-        </StyledContent>
+      <Flex align="center" justify="center">
+        <StyledContent>{children}</StyledContent>
       </Flex>
     </StyledLayout>
   )
