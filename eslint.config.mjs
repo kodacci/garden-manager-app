@@ -3,10 +3,13 @@ import pluginJs from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
 import prettierRecommended from 'eslint-plugin-prettier/recommended'
-
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  {
+    ignores: ['eslint.config.mjs', 'dist/*']
+  },
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]
   },
@@ -27,6 +30,13 @@ export default [
     },
   },
   pluginReact.configs.flat.recommended,
+  {
+    plugins: {
+      'react-hooks': pluginReactHooks,
+    },
+    rules: pluginReactHooks.configs.recommended.rules,
+    ignores: ['*.test.tsx'],
+  },
   prettierRecommended,
   {
     rules: {
@@ -37,6 +47,13 @@ export default [
       curly: 'error',
       'prefer-const': 'error',
       '@typescript-eslint/prefer-readonly': 'error'
+    },
+  },
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
 ]
