@@ -21,6 +21,9 @@ module.exports = {
       '@app': path.resolve(__dirname, 'src/app'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@templates': path.resolve(__dirname, 'src/templates'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@api': path.resolve(__dirname, 'src/api'),
     },
   },
   output: {
@@ -41,5 +44,13 @@ module.exports = {
     compress: true,
     port: 8080,
     historyApiFallback: true,
+    proxy: [{
+      context: ['/api'],
+      target: 'https://garden-manager.test.cloud.ra-tech.pro',
+      headers: {
+        'host': 'garden-manager.test.cloud.ra-tech.pro',
+      },
+      secure: false,
+    }],
   },
 }

@@ -1,8 +1,17 @@
-import { FC, ReactElement } from 'react'
-import { Card, Form, Input } from 'antd'
+import { FC, ReactElement, useCallback } from 'react'
+import { Button, Card, Form, FormProps, Input } from 'antd'
 import { BasicPageTemplate } from '@templates/basic-page-template'
+import { useCreateUser } from '@hooks/useCreateUser'
+import { CreateUserRq } from '@api/model/Users'
 
 export const SignupPage: FC = (): ReactElement => {
+  const mutation = useCreateUser()
+
+  const onFinish: FormProps<CreateUserRq>['onFinish'] = useCallback(
+    (user: CreateUserRq) => mutation.mutate(user),
+    [mutation]
+  )
+
   return (
     <BasicPageTemplate>
       <Card title="Signup to Garden Manager">
@@ -11,6 +20,8 @@ export const SignupPage: FC = (): ReactElement => {
           layout="horizontal"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
+          onFinish={onFinish}
+          autoComplete="off"
         >
           <Form.Item<string>
             label="Login"
@@ -25,6 +36,12 @@ export const SignupPage: FC = (): ReactElement => {
             rules={[{ required: true, message: 'Enter password' }]}
           >
             <Input.Password placeholder="Enter password" />
+          </Form.Item>
+
+          <Form.Item label={null}>
+            <Button type="primary" htmlType="submit">
+              Signup
+            </Button>
           </Form.Item>
         </Form>
       </Card>
