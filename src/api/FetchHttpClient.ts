@@ -7,8 +7,11 @@ import {
 import { v4 } from 'uuid'
 import { isProblemDetail } from '@api/types'
 import { HTTP_CLIENT_ERROR_NAME } from '@api/constants'
+import { AuthService } from '@services/AuthService'
 
 export class FetchHttpClient implements HttpClient {
+  private readonly authService: AuthService
+
   private toQueryRecord(query: QueryParams): Record<string, string> {
     const record: Record<string, string> = {}
     for (const key in query) {
@@ -16,6 +19,10 @@ export class FetchHttpClient implements HttpClient {
     }
 
     return record
+  }
+
+  constructor(authService: AuthService) {
+    this.authService = authService
   }
 
   private async makeRequest<T, R>(
@@ -35,12 +42,13 @@ export class FetchHttpClient implements HttpClient {
           'Content-Type': 'application/json',
           rqUid: v4(),
           rqTs: new Date().toISOString(),
+          ...this.authService.authHeader(),
         },
         body: data ? JSON.stringify(data) : null,
       })
 
       if (!response.ok) {
-        throw this.toHttpClientError(await response.json())
+        return Promise.reject(this.toHttpClientError(await response.json()))
       }
 
       return (await response.json()) as R
@@ -53,7 +61,7 @@ export class FetchHttpClient implements HttpClient {
     if (isProblemDetail(body)) {
       return {
         name: HTTP_CLIENT_ERROR_NAME,
-        message: `Http request failed with status: ${body.status}: ${body.detail}`,
+        message: `Http request failed with status ${body.status}: ${body.detail}`,
         isProblemDetail: true,
         problemDetail: body,
       }
@@ -63,14 +71,16 @@ export class FetchHttpClient implements HttpClient {
   }
 
   private onError(error: unknown): HttpClientError {
+    const ex =
+      error instanceof Error
+        ? error
+        : new Error(`Unknown error: ${JSON.stringify(error)}`)
+
     return {
       name: HTTP_CLIENT_ERROR_NAME,
-      message: 'Http request failed with unexpected error',
+      message: `Http request failed: ${ex ? ex.message : 'Unexpected error'}`,
       isProblemDetail: false,
-      error:
-        error instanceof Error
-          ? error
-          : new Error(`Unknown error: ${JSON.stringify(error)}`),
+      error: ex,
     }
   }
 

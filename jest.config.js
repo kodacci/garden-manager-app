@@ -106,6 +106,7 @@ const config = {
     '@context/(.*)': '<rootDir>/src/context/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@api/(.*)': '<rootDir>/src/api/$1',
+    '@services/(.*)': '<rootDir>/src/services/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

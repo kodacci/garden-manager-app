@@ -4,10 +4,8 @@ import {
   UseMutationResult,
 } from '@tanstack/react-query'
 import { HttpClientError } from '@api/HttpClient'
-
-const onError = (error: HttpClientError): void => {
-  console.log('Api mutation error', error)
-}
+import { useCallback } from 'react'
+import { useNotification } from '@hooks/useNotification'
 
 export type UseApiMutationResult<T, R> = UseMutationResult<
   R,
@@ -17,7 +15,18 @@ export type UseApiMutationResult<T, R> = UseMutationResult<
 
 export const useApiMutation = <T, R>(
   options: UseMutationOptions<R, HttpClientError, T>
-): UseMutationResult<R, HttpClientError, T> => {
+): UseApiMutationResult<T, R> => {
+  const notification = useNotification()
+  const onError = useCallback(
+    (error: HttpClientError) =>
+      notification.error({
+        message: 'Server error',
+        description: error?.message,
+        placement: 'bottomRight',
+      }),
+    [notification]
+  )
+
   options.onError = options.onError ?? onError
 
   return useMutation<R, HttpClientError, T>(options)

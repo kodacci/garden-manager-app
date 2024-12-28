@@ -11,8 +11,8 @@ export interface AuthApi {
 
 export const authApi = (httpClient: HttpClient): AuthApi => ({
   login: {
-    key: ['login'],
-    fn: (data: LoginRq): Promise<LoginRs> =>
+    mutationKey: ['login'],
+    mutationFn: (data: LoginRq): Promise<LoginRs> =>
       httpClient.post<LoginRq, LoginRs>(`${AUTH_API_PATH}/login`, data),
   },
 })

@@ -1,11 +1,5 @@
 import { createContext } from 'react'
+import { AuthService } from '@services/AuthService'
 
-export interface User {
-  id: number
-  login: string
-  role: string
-  name: string
-  email?: string
-}
-
-export const AuthContext = createContext<User | null>(null)
+export const authService = new AuthService()
+export const AuthContext = createContext<AuthService>(authService)

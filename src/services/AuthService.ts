@@ -9,7 +9,11 @@ export interface TokenUser {
 
 interface Payload extends JwtPayload, TokenUser {}
 
-class AuthService {
+interface AuthHeader {
+  Authorization?: string
+}
+
+export class AuthService {
   private user?: TokenUser
   private accessToken?: string
   private refreshToken?: string
@@ -21,6 +25,20 @@ class AuthService {
     const payload = jwtDecode<Payload>(accessToken)
     this.user = pick(payload, 'id', 'login', 'name')
   }
-}
 
-export const authService = new AuthService()
+  public signOut(): void {
+    this.user = undefined
+    this.accessToken = undefined
+    this.refreshToken = undefined
+  }
+
+  public authHeader(): AuthHeader {
+    return this.accessToken
+      ? { Authorization: `Bearer ${this.accessToken}` }
+      : {}
+  }
+
+  public getUser(): TokenUser | undefined {
+    return this.user
+  }
+}

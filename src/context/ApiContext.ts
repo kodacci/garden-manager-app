@@ -1,8 +1,7 @@
 import { createContext } from 'react'
-import { FetchHttpClient } from '@api/FetchHttpClient'
 import { api, GardenManagerApi } from '@api/api'
+import { FetchHttpClient } from '@api/FetchHttpClient'
+import { AuthService } from '@services/AuthService'
 
-const httpClient = new FetchHttpClient()
-export const gmApi = api(httpClient)
-
+const gmApi = api(new FetchHttpClient(new AuthService()))
 export const ApiContext = createContext<GardenManagerApi>(gmApi)
