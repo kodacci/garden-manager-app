@@ -6,7 +6,12 @@ import { useApi } from '@hooks/useApi'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '@context/AuthContext'
 
-export const useUserLogin = (password: string) => {
+export interface UseUserLoginResult {
+  login: (user: User) => void
+  isPending: boolean
+}
+
+export const useUserLogin = (password: string): UseUserLoginResult => {
   const loginMutation = useApiMutation(useApi().login)
   const navigate = useNavigate()
   const authService = useContext(AuthContext)

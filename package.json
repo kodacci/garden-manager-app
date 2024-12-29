@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js",
-    "prity": "prettier src/ --check",
-    "prity:fix": "prettier src --write",
+    "pritty": "prettier src/ --check",
+    "pritty:fix": "prettier src test --write",
     "lint": "eslint src/**",
     "lint:fix": "eslint --fix src/**",
     "test": "jest src"
@@ -41,8 +41,10 @@
     "@jest/globals": "^29.7.0",
     "@tanstack/eslint-plugin-query": "^5.62.9",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
+    "@types/jwt-encode": "^1.0.3",
     "@types/lodash": "^4.17.13",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
@@ -58,6 +60,8 @@
     "html-webpack-plugin": "^5.6.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "jwt-encode": "^1.0.1",
+    "msw": "^2.7.0",
     "prettier": "3.4.2",
     "text-encoding": "^0.7.0",
     "ts-jest": "^29.2.5",
@@ -67,5 +71,10 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "assets"
+    ]
   }
 }

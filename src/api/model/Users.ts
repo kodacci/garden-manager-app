@@ -1,10 +1,10 @@
 export interface CreateUserRq {
-  login: string
-  password: string
-  name: string
-  email?: string
+  readonly login: string
+  readonly password: string
+  readonly name: string
+  readonly email?: string
 }
 
-export interface User extends CreateUserRq {
-  id: number
+export interface User extends Omit<CreateUserRq, 'password'> {
+  readonly id: number
 }

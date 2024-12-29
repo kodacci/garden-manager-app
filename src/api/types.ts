@@ -2,8 +2,8 @@ import { MutationFunction, MutationKey } from '@tanstack/react-query'
 import { ProblemDetail } from '@api/HttpClient'
 
 export interface MutationApiMethod<T, R> {
-  mutationKey: MutationKey
-  mutationFn: MutationFunction<R, T>
+  readonly mutationKey: MutationKey
+  readonly mutationFn: MutationFunction<R, T>
 }
 
 export const isProblemDetail = (problem: unknown): problem is ProblemDetail => {

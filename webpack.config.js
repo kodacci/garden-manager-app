@@ -17,14 +17,14 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@app': path.resolve(__dirname, 'src/app'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
-      '@templates': path.resolve(__dirname, 'src/templates'),
-      '@context': path.resolve(__dirname, 'src/context'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      '@api': path.resolve(__dirname, 'src/api'),
-      '@services': path.resolve(__dirname, 'src/services'),
+      '@app': path.resolve(__dirname, 'src/app/'),
+      '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@templates': path.resolve(__dirname, 'src/templates/'),
+      '@context': path.resolve(__dirname, 'src/context/'),
+      '@hooks': path.resolve(__dirname, 'src/hooks/'),
+      '@api': path.resolve(__dirname, 'src/api/'),
+      '@services': path.resolve(__dirname, 'src/services/'),
+      '@test': path.resolve(__dirname, 'test/'),
     },
   },
   output: {

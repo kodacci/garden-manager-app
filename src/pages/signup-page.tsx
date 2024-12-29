@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useState } from 'react'
+import { FC, ReactNode, useCallback, useState } from 'react'
 import { Button, Card, Flex, Form, FormProps, Input } from 'antd'
 import { BasicPageTemplate } from '@templates/basic-page-template'
 import { CreateUserRq } from '@api/model/Users'
@@ -11,7 +11,7 @@ const StyledCard = styled(Card)`
   min-width: 450px;
 `
 
-export const SignupPage: FC = (): ReactElement => {
+export const SignupPage: FC = (): ReactNode => {
   const createMutation = useApiMutation(useApi().createUser)
   const [password, setPassword] = useState('')
   const { login, isPending: isLoginPending } = useUserLogin(password)

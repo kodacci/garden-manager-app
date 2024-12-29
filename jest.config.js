@@ -107,6 +107,8 @@ const config = {
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@api/(.*)': '<rootDir>/src/api/$1',
     '@services/(.*)': '<rootDir>/src/services/$1',
+    '@test/(.*)': '<rootDir>/test/$1',
+    'uuid': require.resolve('uuid'),
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -145,15 +147,16 @@ const config = {
   // A list of paths to directories that Jest should use to search for files in
   roots: [
     '<rootDir>/src',
+    '<rootDir>/test',
   ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: [
-    '<rootDir>/test/setup/text-encoder.ts',
-  ],
+  // setupFiles: [
+  //   '<rootDir>/test/setup/text-encoder.ts',
+  // ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -165,10 +168,13 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: "<rootDir>/test/setup/jsdom-extended.js",
+  // testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,

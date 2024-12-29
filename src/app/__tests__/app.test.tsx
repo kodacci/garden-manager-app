@@ -1,6 +1,6 @@
 import '@mocks/matchMedia.mock.test'
 import { render, screen } from '@testing-library/react'
-import { App } from '@app/app'
+import { App } from '@app/App'
 
 test('should render application (redirect to signup)', () => {
   render(<App />)
