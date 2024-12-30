@@ -42,13 +42,13 @@ export class FetchHttpClient implements HttpClient {
           'Content-Type': 'application/json',
           rqUid: v4(),
           rqTs: new Date().toISOString(),
-          ...this.authService.authHeader(),
+          ...this.authService.getAuthHeader(),
         },
         body: data ? JSON.stringify(data) : null,
       })
 
       if (!response.ok) {
-        return Promise.reject(this.toHttpClientError(await response.json()))
+        return Promise.reject(await this.toHttpClientError(response))
       }
 
       return (await response.json()) as R
@@ -57,17 +57,27 @@ export class FetchHttpClient implements HttpClient {
     }
   }
 
-  private toHttpClientError(body: unknown): HttpClientError {
-    if (isProblemDetail(body)) {
-      return {
-        name: HTTP_CLIENT_ERROR_NAME,
-        message: `Http request failed with status ${body.status}: ${body.detail}`,
-        isProblemDetail: true,
-        problemDetail: body,
-      }
-    }
+  private async toHttpClientError(
+    response: Response
+  ): Promise<HttpClientError> {
+    const rawBody = await response.text()
 
-    return this.onError(body)
+    try {
+      const body: unknown = JSON.parse(rawBody)
+      if (isProblemDetail(body)) {
+        return {
+          name: HTTP_CLIENT_ERROR_NAME,
+          message: `Http request failed with status ${body.status}: ${body.detail}`,
+          isProblemDetail: true,
+          problemDetail: body,
+        }
+      }
+
+      return this.onError(body)
+    } catch (error: unknown) {
+      console.error(`Error parsing non ok response as json`, error)
+      return this.onError(`status: ${response.status}, body: ${rawBody}`)
+    }
   }
 
   private onError(error: unknown): HttpClientError {
@@ -78,7 +88,7 @@ export class FetchHttpClient implements HttpClient {
 
     return {
       name: HTTP_CLIENT_ERROR_NAME,
-      message: `Http request failed: ${ex ? ex.message : 'Unexpected error'}`,
+      message: `Http request failed: ${ex.message}`,
       isProblemDetail: false,
       error: ex,
     }

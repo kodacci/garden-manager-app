@@ -32,7 +32,7 @@ export class AuthService {
     this.refreshToken = undefined
   }
 
-  public authHeader(): AuthHeader {
+  public getAuthHeader(): AuthHeader {
     return this.accessToken
       ? { Authorization: `Bearer ${this.accessToken}` }
       : {}

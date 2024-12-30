@@ -21,3 +21,19 @@ export const usersHandlers = [
     }
   ),
 ]
+
+const error5xx = {
+  type: 'about:blank',
+  title: 'Server Error',
+  status: 500,
+  detail: 'Dummy error',
+  instance: USERS_API_PATH,
+}
+
+export const usersErrorHandlers = [
+  http.post(USERS_API_PATH, () => {
+    return new HttpResponse(JSON.stringify(error5xx), {
+      status: error5xx.status,
+    })
+  }),
+]

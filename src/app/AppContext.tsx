@@ -4,6 +4,7 @@ import { AuthContext, authService } from '@context/AuthContext'
 import { ApiContext } from '@context/ApiContext'
 import { FetchHttpClient } from '@api/FetchHttpClient'
 import { api } from '@api/api'
+import { App } from 'antd'
 
 const queryClient = new QueryClient()
 const httpClient = new FetchHttpClient(authService)
@@ -16,7 +17,9 @@ export const AppContext: FC<PropsWithChildren> = ({
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <AuthContext.Provider value={authService}>
-          <ApiContext.Provider value={gmApi}>{children}</ApiContext.Provider>
+          <ApiContext.Provider value={gmApi}>
+            <App>{children}</App>
+          </ApiContext.Provider>
         </AuthContext.Provider>
       </QueryClientProvider>
     </StrictMode>
