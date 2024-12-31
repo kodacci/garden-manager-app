@@ -24,12 +24,13 @@ const config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: "<rootDir>/coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
+  coveragePathIgnorePatterns: [
+    "\\\\node_modules\\\\",
+    '<rootDir>/test'
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
@@ -103,6 +104,13 @@ const config = {
     '@app/(.*)': '<rootDir>/src/app/$1',
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@templates/(.*)': '<rootDir>/src/templates/$1',
+    '@context/(.*)': '<rootDir>/src/context/$1',
+    '@hooks/(.*)': '<rootDir>/src/hooks/$1',
+    '@api/(.*)': '<rootDir>/src/api/$1',
+    '@services/(.*)': '<rootDir>/src/services/$1',
+    '@components/(.*)': '<rootDir>/src/components/$1',
+    '@test/(.*)': '<rootDir>/test/$1',
+    'uuid': require.resolve('uuid'),
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -141,15 +149,16 @@ const config = {
   // A list of paths to directories that Jest should use to search for files in
   roots: [
     '<rootDir>/src',
+    '<rootDir>/test',
   ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: [
-    '<rootDir>/test/setup/text-encoder.ts',
-  ],
+  // setupFiles: [
+  //   '<rootDir>/test/setup/text-encoder.ts',
+  // ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -161,10 +170,13 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: "<rootDir>/test/setup/jsdom-extended.js",
+  // testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,
@@ -195,10 +207,10 @@ const config = {
   // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "\\\\node_modules\\\\",
-  //   "\\.pnp\\.[^\\\\]+$"
-  // ],
+  transformIgnorePatterns: [
+    "\\\\node_modules\\\\",
+    // "\\.pnp\\.[^\\\\]+$"
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

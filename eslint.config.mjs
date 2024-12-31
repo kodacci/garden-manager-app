@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
 import prettierRecommended from 'eslint-plugin-prettier/recommended'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
+import pluginReactQuery from '@tanstack/eslint-plugin-query'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -37,6 +38,7 @@ export default [
     rules: pluginReactHooks.configs.recommended.rules,
     ignores: ['*.test.tsx'],
   },
+  ...pluginReactQuery.configs['flat/recommended'],
   prettierRecommended,
   {
     rules: {
