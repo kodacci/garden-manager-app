@@ -6,6 +6,7 @@ import {
 import { HttpClientError } from '@api/HttpClient'
 import { useCallback } from 'react'
 import { useNotification } from '@hooks/useNotification'
+import { ProblemDetailWidget } from '@components/ProblemDetailWidget'
 
 export type UseApiMutationResult<T, R> = UseMutationResult<
   R,
@@ -21,8 +22,13 @@ export const useApiMutation = <T, R>(
     (error: HttpClientError) =>
       notification.error({
         message: 'Server error',
-        description: error?.message,
+        description: error.isProblemDetail ? (
+          <ProblemDetailWidget problemDetail={error.problemDetail} />
+        ) : (
+          error.message
+        ),
         placement: 'bottomRight',
+        duration: 0,
       }),
     [notification]
   )

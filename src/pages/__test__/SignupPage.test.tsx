@@ -1,7 +1,7 @@
 import '@mocks/matchMedia.mock.test'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { SignupPage } from '@pages/signup-page'
+import { SignupPage } from '@pages/SignupPage'
 import { setupServer } from 'msw/node'
 import { users, usersErrorHandlers, usersHandlers } from '@test/msw/users'
 import { authHandlers, tokens } from '@test/msw/auth'
@@ -18,10 +18,6 @@ const TEST_EMAIL = 'test@test.com'
 const server = setupServer(...authHandlers)
 
 beforeAll(() => server.listen())
-beforeEach(() => {
-  users.length = 0
-  server.resetHandlers()
-})
 afterAll(() => server.close())
 
 const fillInput = (placeholder: string, value: string): boolean =>
@@ -36,30 +32,53 @@ const fillInputs = (): void => {
   fillInput('Your email', TEST_EMAIL)
 }
 
-const renderPage = (): void => {
-  render(
-    <AppContext>
-      <MemoryRouter>
-        <Routes>
-          <Route index element={<SignupPage />} />
-          <Route path="/" element={<span>Main page</span>} />
-        </Routes>
-      </MemoryRouter>
-    </AppContext>
-  )
-}
-
 describe('SignupPage', () => {
+  beforeEach(() => {
+    users.length = 0
+    server.resetHandlers()
+  })
+
+  it('should show notification on signup error', async (): Promise<void> => {
+    server.use(...usersErrorHandlers)
+
+    const user = userEvent.setup()
+    const { findByText, queryByText } = render(
+      <AppContext>
+        <MemoryRouter>
+          <Routes>
+            <Route index element={<SignupPage />} />
+          </Routes>
+        </MemoryRouter>
+      </AppContext>
+    )
+
+    act(() => fillInputs())
+    await user.click(await findByText('Signup'))
+
+    await findByText('Server error', undefined)
+
+    expect(queryByText('Dummy error')).not.toBeNull()
+  })
+
   it('should be able to signup to Garden Manager', async (): Promise<void> => {
     server.use(...usersHandlers)
     const user = userEvent.setup()
 
-    renderPage()
+    const { findByText, queryByText } = render(
+      <AppContext>
+        <MemoryRouter>
+          <Routes>
+            <Route index element={<SignupPage />} />
+            <Route path="/" element={<span>Main page</span>} />
+          </Routes>
+        </MemoryRouter>
+      </AppContext>
+    )
 
-    expect(() => screen.getByText('Signup to Garden Manager')).not.toThrow()
+    expect(queryByText('Signup to Garden Manager')).not.toBeNull()
 
     act(() => fillInputs())
-    await user.click(await screen.findByText('Signup'))
+    await user.click(await findByText('Signup'))
 
     await waitFor(() => expect(authService.getUser()).not.toBeNull())
 
@@ -73,24 +92,5 @@ describe('SignupPage', () => {
       Authorization: `Bearer ${tokens.accessToken}`,
     })
     expect(authService.getUser()).toEqual(pick(tester, 'id', 'login', 'name'))
-
-    await waitFor(() => expect(screen.findByText('Main page')))
-  })
-
-  it('should show notification on signup error', async (): Promise<void> => {
-    server.use(...usersErrorHandlers)
-
-    const user = userEvent.setup()
-    renderPage()
-    act(() => fillInputs())
-    await user.click(await screen.findByText('Signup'))
-
-    await waitFor(() =>
-      expect(() => screen.findByText('Server error')).not.toThrow()
-    )
-
-    expect(() =>
-      screen.findByText(/Http request failed with status 500/)
-    ).not.toThrow()
   })
 })

@@ -8,7 +8,7 @@ export interface MutationApiMethod<T, R> {
 
 export const isProblemDetail = (problem: unknown): problem is ProblemDetail => {
   return (
-    problem !== null &&
+    !!problem &&
     typeof problem === 'object' &&
     'title' in problem &&
     typeof problem.title === 'string' &&
