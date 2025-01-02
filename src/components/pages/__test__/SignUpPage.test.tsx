@@ -1,7 +1,7 @@
 import '@mocks/matchMedia.mock.test'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { SignupPage } from '@components/pages/SignupPage'
+import { SignUpPage } from '@components/pages/SignUpPage'
 import { setupServer } from 'msw/node'
 import { users, usersErrorHandlers, usersHandlers } from '@test/msw/users'
 import { authHandlers, tokens } from '@test/msw/auth'
@@ -32,11 +32,13 @@ const fillInputs = (): void => {
   fillInput('Your email', TEST_EMAIL)
 }
 
-describe('SignupPage', () => {
+describe('SignUpPage', () => {
   beforeEach(() => {
     users.length = 0
     server.resetHandlers()
   })
+
+  afterEach(() => authService.signOut())
 
   it('should show notification on sign up error', async (): Promise<void> => {
     server.use(...usersErrorHandlers)
@@ -46,7 +48,7 @@ describe('SignupPage', () => {
       <AppContext>
         <MemoryRouter>
           <Routes>
-            <Route index element={<SignupPage />} />
+            <Route index element={<SignUpPage />} />
           </Routes>
         </MemoryRouter>
       </AppContext>
@@ -68,7 +70,7 @@ describe('SignupPage', () => {
       <AppContext>
         <MemoryRouter>
           <Routes>
-            <Route index element={<SignupPage />} />
+            <Route index element={<SignUpPage />} />
             <Route path="/" element={<span>Main page</span>} />
           </Routes>
         </MemoryRouter>

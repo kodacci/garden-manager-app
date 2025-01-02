@@ -18,8 +18,9 @@ interface AuthHeader {
 }
 
 export class AuthService {
-  private static readonly ACCESS_TOKEN_KEY: string = 'gmAccessToken'
-  private static readonly REFRESH_TOKEN_KEY: string = 'gmRefreshToken'
+  public static readonly ACCESS_TOKEN_KEY: string = 'gmAccessToken'
+  public static readonly REFRESH_TOKEN_KEY: string = 'gmRefreshToken'
+
   private static readonly TIMEOUT_PREPEND: number = 10000
 
   private readonly api: AuthApi = authApi(new FetchHttpClient(this))

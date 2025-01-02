@@ -9,7 +9,7 @@ import { PasswordFormItem } from '@components/atoms/PasswordFormItem'
 import { LoginFormItem } from '@components/atoms/LoginFormItem'
 import { SubmitButton } from '@components/atoms/SubmitButton'
 
-export const SignupPage: FC = (): ReactNode => {
+export const SignUpPage: FC = (): ReactNode => {
   const createMutation = useApiMutation(useApi().createUser)
   const { login, isPending: isLoginPending } = useUserLogin()
   const isPending = createMutation.isPending || isLoginPending

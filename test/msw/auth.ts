@@ -13,7 +13,7 @@ export const tokens = {
   refreshToken: '',
 }
 
-const exp = Math.floor(Date.now() / 1000) + 3600000
+const exp = Math.floor(Date.now() / 1000) + 60 * 60
 
 export const authHandlers = [
   http.post<PathParams, LoginRq, LoginRs>(

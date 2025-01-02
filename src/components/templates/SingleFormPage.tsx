@@ -22,9 +22,6 @@ const StyledHeader = styled(Layout.Header)`
 `
 
 const NavBarContainer = styled('div')`
-  //display: flex;
-  //justify-content: end;
-  //flex-shrink: 0;
   width: 100%;
 `
 
