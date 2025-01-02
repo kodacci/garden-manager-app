@@ -1,5 +1,5 @@
 import { http, HttpResponse, PathParams } from 'msw'
-import { CreateUserRq, User } from '@api/model/Users'
+import { CreateUserRq, User } from '@api/model/users'
 import { omit } from 'lodash'
 import { USERS_API_PATH } from '@api/constants'
 

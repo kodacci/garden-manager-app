@@ -1,20 +1,20 @@
 import { render, screen } from '@testing-library/react'
-import { User } from '@api/model/Users'
+import { User } from '@api/model/users'
 import sign from 'jwt-encode'
-import { AuthContext } from '@context/AuthContext'
-import { AuthService } from '@services/AuthService'
-import { HomePage } from '@pages/HomePage'
+import { AuthContext, authService } from '@context/AuthContext'
+import { HomePage } from '@components/pages/HomePage'
 import { MemoryRouter, Route, Routes } from 'react-router'
 
 const user: User = { id: 0, login: 'test', name: 'Tester' }
-const accessToken = sign({ ...user, type: 'ACCESS' }, 'secret')
-const refreshToken = sign({ ...user, type: 'REFRESH' }, 'secret')
+const exp = Math.floor(Date.now() / 1000) + 3600000
 
-const authService = new AuthService()
+const accessToken = sign({ ...user, type: 'ACCESS', exp }, 'secret')
+const refreshToken = sign({ ...user, type: 'REFRESH', exp }, 'secret')
+
 authService.authenticate(accessToken, refreshToken)
 
 describe('HomePage', () => {
-  it('should render HomePage', async (): Promise<void> => {
+  it('should render HomePage', (): void => {
     render(
       <AuthContext.Provider value={authService}>
         <MemoryRouter>

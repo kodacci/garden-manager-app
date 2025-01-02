@@ -1,6 +1,6 @@
 import { HttpClient } from '@api/HttpClient'
 import { USERS_API_PATH } from '@api/constants'
-import { CreateUserRq, User } from '@api/model/Users'
+import { CreateUserRq, User } from '@api/model/users'
 import { MutationApiMethod } from '@api/types'
 
 export interface UsersApi {

@@ -102,8 +102,6 @@ const config = {
     '@mocks/(.*)': '<rootDir>/test/mocks/$1',
     '@/(.*):': '<rootDir>/src/$1',
     '@app/(.*)': '<rootDir>/src/app/$1',
-    '@pages/(.*)': '<rootDir>/src/pages/$1',
-    '@templates/(.*)': '<rootDir>/src/templates/$1',
     '@context/(.*)': '<rootDir>/src/context/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@api/(.*)': '<rootDir>/src/api/$1',

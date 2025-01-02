@@ -1,7 +1,7 @@
 import '@mocks/matchMedia.mock.test'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { SignupPage } from '@pages/SignupPage'
+import { SignupPage } from '@components/pages/SignupPage'
 import { setupServer } from 'msw/node'
 import { users, usersErrorHandlers, usersHandlers } from '@test/msw/users'
 import { authHandlers, tokens } from '@test/msw/auth'
@@ -38,7 +38,7 @@ describe('SignupPage', () => {
     server.resetHandlers()
   })
 
-  it('should show notification on signup error', async (): Promise<void> => {
+  it('should show notification on sign up error', async (): Promise<void> => {
     server.use(...usersErrorHandlers)
 
     const user = userEvent.setup()
@@ -53,14 +53,14 @@ describe('SignupPage', () => {
     )
 
     act(() => fillInputs())
-    await user.click(await findByText('Signup'))
+    await user.click(await findByText('Sign up'))
 
     await findByText('Server error', undefined)
 
     expect(queryByText('Dummy error')).not.toBeNull()
   })
 
-  it('should be able to signup to Garden Manager', async (): Promise<void> => {
+  it('should be able to sign up to Garden Manager', async (): Promise<void> => {
     server.use(...usersHandlers)
     const user = userEvent.setup()
 
@@ -75,10 +75,10 @@ describe('SignupPage', () => {
       </AppContext>
     )
 
-    expect(queryByText('Signup to Garden Manager')).not.toBeNull()
+    expect(queryByText('Sign up to Garden Manager')).not.toBeNull()
 
     act(() => fillInputs())
-    await user.click(await findByText('Signup'))
+    await user.click(await findByText('Sign up'))
 
     await waitFor(() => expect(authService.getUser()).not.toBeNull())
 

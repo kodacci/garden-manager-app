@@ -6,7 +6,8 @@ import {
 import { HttpClientError } from '@api/HttpClient'
 import { useCallback } from 'react'
 import { useNotification } from '@hooks/useNotification'
-import { ProblemDetailWidget } from '@components/ProblemDetailWidget'
+import { ProblemDetailWidget } from '@components/atoms/ProblemDetailWidget'
+import { useNavigate } from 'react-router'
 
 export type UseApiMutationResult<T, R> = UseMutationResult<
   R,
@@ -17,9 +18,16 @@ export type UseApiMutationResult<T, R> = UseMutationResult<
 export const useApiMutation = <T, R>(
   options: UseMutationOptions<R, HttpClientError, T>
 ): UseApiMutationResult<T, R> => {
+  const navigate = useNavigate()
   const notification = useNotification()
+
   const onError = useCallback(
-    (error: HttpClientError) =>
+    (error: HttpClientError) => {
+      if (error.problemDetail?.status === 403) {
+        void navigate('/signout')
+        return
+      }
+
       notification.error({
         message: 'Server error',
         description: error.isProblemDetail ? (
@@ -29,8 +37,9 @@ export const useApiMutation = <T, R>(
         ),
         placement: 'bottomRight',
         duration: 0,
-      }),
-    [notification]
+      })
+    },
+    [navigate, notification]
   )
 
   options.onError = options.onError ?? onError

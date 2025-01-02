@@ -1,7 +1,7 @@
 import { FC, ReactElement, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuthUser } from '@hooks/useAuthUser'
-import { BasicPageTemplate } from '@templates/basic-page-template'
+import { SingleFormPage } from '@components/templates/SingleFormPage'
 import { Alert } from 'antd'
 
 export const HomePage: FC = (): ReactElement => {
@@ -10,13 +10,13 @@ export const HomePage: FC = (): ReactElement => {
 
   useEffect(() => {
     if (!authUser) {
-      void navigate('/signup')
+      void navigate('/signin')
     }
   }, [authUser, navigate])
 
   return (
-    <BasicPageTemplate>
+    <SingleFormPage>
       <Alert message={`Hello, ${authUser?.name}! Welcome to Garden Manager`} />
-    </BasicPageTemplate>
+    </SingleFormPage>
   )
 }
