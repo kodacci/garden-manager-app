@@ -12,21 +12,20 @@ pipeline {
         stage('Determine version') {
             steps {
                 script {
-                    NVM_VERSION = sh(encoding: 'UTF-8', returnStdout: true, script: 'bash -l -c "nvm -v"').trim()
-                    echo "NVM version: $NVM_VERSION"
-
-                    PROJECT_VERSION =
-                            sh(
-                                    encoding: 'UTF-8',
-                                    returnStdout: true,
-                                    script: 'bash -l -c "node -e \\"const pkg = require(\'./package.json\'); console.log(pkg.version)\\""'
-                            )
-                    DEPLOY_GIT_SCOPE =
-                            sh(encoding: 'UTF-8', returnStdout: true, script: 'git name-rev --name-only HEAD')
-                                    .trim()
-                                    .tokenize('/')
-                                    .last()
-                                    .toLowerCase()
+                    nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                        PROJECT_VERSION =
+                                sh(
+                                        encoding: 'UTF-8',
+                                        returnStdout: true,
+                                        script: 'node -e "const pkg = require(\'./package.json\'); console.log(pkg.version)"'
+                                )
+                        DEPLOY_GIT_SCOPE =
+                                sh(encoding: 'UTF-8', returnStdout: true, script: 'git name-rev --name-only HEAD')
+                                        .trim()
+                                        .tokenize('/')
+                                        .last()
+                                        .toLowerCase()
+                    }
 
                     echo "Project version: '${PROJECT_VERSION}'"
                     echo "Git branch scope: '${DEPLOY_GIT_SCOPE}'"
@@ -37,7 +36,9 @@ pipeline {
         stage('Install All Deps') {
             steps {
                 script {
-                    sh 'npm install'
+                    nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                        sh 'npm install'
+                    }
                 }
             }
         }
@@ -45,7 +46,9 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'npm test'
+                    nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                        sh 'npm test'
+                    }
                 }
             }
         }
@@ -53,7 +56,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'npm run build'
+                    nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                        sh 'npm run build'
+                    }
                 }
             }
         }
