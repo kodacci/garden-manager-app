@@ -12,11 +12,14 @@ pipeline {
         stage('Determine version') {
             steps {
                 script {
+                    NVM_VERSION = sh(encoding: 'UTF-8', returnStdout: true, script: 'bash -l -c "nvm -v"').trim()
+                    echo "NVM version: $NVM_VERSION"
+
                     PROJECT_VERSION =
                             sh(
                                     encoding: 'UTF-8',
                                     returnStdout: true,
-                                    script: 'node -e "const pkg = require(\'./package.json\'); console.log(pkg.version)"'
+                                    script: 'bash -l -c "node -e \\"const pkg = require(\'./package.json\'); console.log(pkg.version)\\""'
                             )
                     DEPLOY_GIT_SCOPE =
                             sh(encoding: 'UTF-8', returnStdout: true, script: 'git name-rev --name-only HEAD')
