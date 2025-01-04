@@ -1,7 +1,6 @@
-import '@mocks/matchMedia.mock.test'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { SignupPage } from '@pages/SignupPage'
+import { SignUpPage } from '@components/pages/SignUpPage'
 import { setupServer } from 'msw/node'
 import { users, usersErrorHandlers, usersHandlers } from '@test/msw/users'
 import { authHandlers, tokens } from '@test/msw/auth'
@@ -17,9 +16,6 @@ const TEST_EMAIL = 'test@test.com'
 
 const server = setupServer(...authHandlers)
 
-beforeAll(() => server.listen())
-afterAll(() => server.close())
-
 const fillInput = (placeholder: string, value: string): boolean =>
   fireEvent.change(screen.getByPlaceholderText(placeholder), {
     target: { value },
@@ -32,13 +28,18 @@ const fillInputs = (): void => {
   fillInput('Your email', TEST_EMAIL)
 }
 
-describe('SignupPage', () => {
+describe('SignUpPage', () => {
+  beforeAll(() => server.listen())
+  afterAll(() => server.close())
+
   beforeEach(() => {
     users.length = 0
     server.resetHandlers()
   })
 
-  it('should show notification on signup error', async (): Promise<void> => {
+  afterEach(() => authService.signOut())
+
+  it('should show notification on sign up error', async (): Promise<void> => {
     server.use(...usersErrorHandlers)
 
     const user = userEvent.setup()
@@ -46,21 +47,21 @@ describe('SignupPage', () => {
       <AppContext>
         <MemoryRouter>
           <Routes>
-            <Route index element={<SignupPage />} />
+            <Route index element={<SignUpPage />} />
           </Routes>
         </MemoryRouter>
       </AppContext>
     )
 
     act(() => fillInputs())
-    await user.click(await findByText('Signup'))
+    await user.click(await findByText('Sign up'))
 
     await findByText('Server error', undefined)
 
     expect(queryByText('Dummy error')).not.toBeNull()
   })
 
-  it('should be able to signup to Garden Manager', async (): Promise<void> => {
+  it('should be able to sign up to Garden Manager', async (): Promise<void> => {
     server.use(...usersHandlers)
     const user = userEvent.setup()
 
@@ -68,17 +69,17 @@ describe('SignupPage', () => {
       <AppContext>
         <MemoryRouter>
           <Routes>
-            <Route index element={<SignupPage />} />
+            <Route index element={<SignUpPage />} />
             <Route path="/" element={<span>Main page</span>} />
           </Routes>
         </MemoryRouter>
       </AppContext>
     )
 
-    expect(queryByText('Signup to Garden Manager')).not.toBeNull()
+    expect(queryByText('Sign up to Garden Manager')).not.toBeNull()
 
     act(() => fillInputs())
-    await user.click(await findByText('Signup'))
+    await user.click(await findByText('Sign up'))
 
     await waitFor(() => expect(authService.getUser()).not.toBeNull())
 

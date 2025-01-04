@@ -31,8 +31,6 @@
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@app/*": ["./src/app/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@templates/*": ["./src/templates/*"],
       "@api/*": ["./src/api/*"],
       "@context/*": ["./src/context/*"],
       "@hooks/*": ["./src/hooks/*"],

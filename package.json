@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js",
-    "pritty": "prettier src/ --check",
-    "pritty:fix": "prettier src test --write",
+    "pretty": "prettier src/ --check",
+    "pretty:fix": "prettier src test --write",
     "lint": "eslint src/**",
     "lint:fix": "eslint --fix src/**",
     "test": "jest src --config ./jest.config.js"
@@ -21,6 +21,7 @@
   "author": "Andrey Ryabtsev",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "@ant-design/icons": "^5.5.2",
     "@tanstack/react-query": "^5.62.10",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/jwt-decode": "^2.2.1",

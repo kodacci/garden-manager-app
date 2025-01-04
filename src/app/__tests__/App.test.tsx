@@ -1,4 +1,3 @@
-import '@mocks/matchMedia.mock.test'
 import { render, screen } from '@testing-library/react'
 import { App } from '@app/App'
 
@@ -7,6 +6,6 @@ describe('App', () => {
     render(<App />)
 
     // Should redirect to signup
-    expect(screen.queryByText('Signup to Garden Manager')).not.toBeNull()
+    expect(screen.queryByText('Sign in to Garden Manager')).not.toBeNull()
   })
 })

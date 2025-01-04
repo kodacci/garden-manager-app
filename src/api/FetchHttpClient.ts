@@ -101,12 +101,4 @@ export class FetchHttpClient implements HttpClient {
   post<T, R>(url: string, data?: T, query?: QueryParams): Promise<R> {
     return this.makeRequest(HttpMethod.POST, url, data, query)
   }
-
-  put<T, R>(url: string, data: T, query?: QueryParams): Promise<R> {
-    return this.makeRequest(HttpMethod.PUT, url, data, query)
-  }
-
-  delete<R>(url: string): Promise<R> {
-    return this.makeRequest(HttpMethod.DELETE, url)
-  }
 }

@@ -102,8 +102,6 @@ const config = {
     '@mocks/(.*)': '<rootDir>/test/mocks/$1',
     '@/(.*):': '<rootDir>/src/$1',
     '@app/(.*)': '<rootDir>/src/app/$1',
-    '@pages/(.*)': '<rootDir>/src/pages/$1',
-    '@templates/(.*)': '<rootDir>/src/templates/$1',
     '@context/(.*)': '<rootDir>/src/context/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@api/(.*)': '<rootDir>/src/api/$1',
@@ -156,9 +154,9 @@ const config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [
-  //   '<rootDir>/test/setup/text-encoder.ts',
-  // ],
+  setupFiles: [
+    '<rootDir>/test/setup/matchMedia.mock.ts',
+  ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -170,7 +168,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "<rootDir>/test/setup/jsdom-extended.js",
+  testEnvironment: "<rootDir>/test/env/jsdom-extended.js",
   // testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
