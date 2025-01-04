@@ -18,7 +18,7 @@ pipeline {
                                         encoding: 'UTF-8',
                                         returnStdout: true,
                                         script: 'node -e "const pkg = require(\'./package.json\'); console.log(pkg.version)"'
-                                )
+                                ).trim()
                         DEPLOY_GIT_SCOPE =
                                 sh(encoding: 'UTF-8', returnStdout: true, script: 'git name-rev --name-only HEAD')
                                         .trim()
@@ -43,12 +43,40 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Prettier') {
             steps {
                 script {
                     nodejs(nodeJSInstallationName: 'NodeJS v22') {
-                        sh 'npm test'
+                        sh 'npm run pretty'
                     }
+                }
+            }
+        }
+
+        stage('Linter') {
+            steps {
+                script {
+                    nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                        sh 'npm run lint'
+                    }
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    println('Starting running tests')
+                    def logFileName = env.BUILD_TAG + '-test.log'
+                    try {
+                        nodejs(nodeJSInstallationName: 'NodeJS v22') {
+                            sh "npm run test 2>&1| tee $logFileName"
+                        }
+                    } finally {
+                        archiveArtifacts(logFileName)
+                        sh "rm $logFileName"
+                    }
+                    println('Tests running finished')
                 }
             }
         }
