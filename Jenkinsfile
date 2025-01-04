@@ -70,11 +70,17 @@ pipeline {
                     def logFileName = env.BUILD_TAG + '-test.log'
                     try {
                         nodejs(nodeJSInstallationName: 'NodeJS v22') {
-                            sh "npm run test 2>&1| tee \"$logFileName\""
+                            sh "npm run test 2>&1> \"$logFileName\""
                         }
+
+                        clover(
+                                cloverReportDir: 'coverage',
+                                cloverReportFileName: 'clover.xml',
+                                healthTarget: [methodCoverage: 90, conditionalCoverage: 80, statementCoverage: 90]
+                        )
                     } finally {
                         archiveArtifacts(logFileName)
-                        sh "rm $logFileName"
+                        sh "rm \"$logFileName\""
                     }
                     println('Tests running finished')
                 }
