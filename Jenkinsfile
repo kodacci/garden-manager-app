@@ -70,7 +70,7 @@ pipeline {
                     def logFileName = env.BUILD_TAG + '-test.log'
                     try {
                         nodejs(nodeJSInstallationName: 'NodeJS v22') {
-                            sh "npm run test 2>&1> \"$logFileName\""
+                            sh "npm run test 2>&1 | cat > \"$logFileName\""
                         }
 
                         clover(
