@@ -15,7 +15,10 @@ const server = setupServer(...authHandlers)
 describe('SignInPage', () => {
   beforeAll(() => server.listen())
   afterAll(() => server.close())
-  afterEach(() => (users.length = 0))
+  afterEach(() => {
+    authService.signOut()
+    users.length = 0
+  })
 
   it('should be able to sign in to Garden Manager', async (): Promise<void> => {
     users.push({ id: 1, login: 'test', name: 'Tester', password: 'abc12345' })
@@ -50,5 +53,5 @@ describe('SignInPage', () => {
     expect(authService.getAuthHeader()).toEqual({
       Authorization: `Bearer ${tokens.accessToken}`,
     })
-  }, 10000)
+  })
 })
