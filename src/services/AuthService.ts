@@ -2,7 +2,6 @@ import { jwtDecode, JwtPayload } from 'jwt-decode'
 import { pick } from 'lodash'
 import { authApi, AuthApi } from '@api/auth'
 import { FetchHttpClient } from '@api/FetchHttpClient'
-
 import { RefreshRs } from '@api/model/auth'
 
 export interface TokenUser {
@@ -11,7 +10,7 @@ export interface TokenUser {
   name: string
 }
 
-interface Payload extends JwtPayload, TokenUser {}
+export interface TokenPayload extends JwtPayload, TokenUser {}
 
 interface AuthHeader {
   Authorization?: string
@@ -21,15 +20,19 @@ export class AuthService {
   public static readonly ACCESS_TOKEN_KEY: string = 'gmAccessToken'
   public static readonly REFRESH_TOKEN_KEY: string = 'gmRefreshToken'
 
-  private static readonly TIMEOUT_PREPEND: number = 10000
+  private static readonly TIMEOUT_PREPEND_MS: number = 10000
 
   private readonly api: AuthApi = authApi(new FetchHttpClient(this))
+  private readonly timeoutPrependMs: number
   private user?: TokenUser
   private accessToken?: string
   private refreshToken?: string
   private timer?: NodeJS.Timeout
 
-  constructor() {
+  constructor(refreshTimeoutPrependMs?: number) {
+    this.timeoutPrependMs =
+      refreshTimeoutPrependMs ?? AuthService.TIMEOUT_PREPEND_MS
+
     this.accessToken =
       localStorage.getItem(AuthService.ACCESS_TOKEN_KEY) ?? undefined
     this.refreshToken =
@@ -68,16 +71,16 @@ export class AuthService {
       return
     }
 
-    const accessPayload = jwtDecode<Payload>(this.accessToken)
-    const refreshPayload = jwtDecode<Payload>(this.refreshToken)
+    const accessPayload = jwtDecode<TokenPayload>(this.accessToken)
+    const refreshPayload = jwtDecode<TokenPayload>(this.refreshToken)
     const now = Date.now()
     if (
       !accessPayload.exp ||
-      accessPayload.exp * 1000 <= now + AuthService.TIMEOUT_PREPEND
+      accessPayload.exp * 1000 <= now + this.timeoutPrependMs
     ) {
       if (
         !refreshPayload.exp ||
-        refreshPayload.exp * 1000 <= now + AuthService.TIMEOUT_PREPEND
+        refreshPayload.exp * 1000 <= now + this.timeoutPrependMs
       ) {
         this.signOut()
         return
@@ -87,9 +90,14 @@ export class AuthService {
       return
     }
 
+    console.log(
+      'Timeout for',
+      accessPayload.exp * 1000 - now - this.timeoutPrependMs
+    )
+
     this.timer = setTimeout(
       () => this.onRefreshTimeout(),
-      accessPayload.exp * 1000 - now - AuthService.TIMEOUT_PREPEND
+      accessPayload.exp * 1000 - now - this.timeoutPrependMs
     )
 
     this.user = pick(accessPayload, 'id', 'login', 'name')

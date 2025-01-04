@@ -1,4 +1,3 @@
-import '@mocks/matchMedia.mock.test'
 import { render, screen } from '@testing-library/react'
 import { App } from '@app/App'
 

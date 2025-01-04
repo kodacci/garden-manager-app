@@ -1,4 +1,3 @@
-import '@mocks/matchMedia.mock.test'
 import { render, waitFor } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { AppContext } from '@app/AppContext'

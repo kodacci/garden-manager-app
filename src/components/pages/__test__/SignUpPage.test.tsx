@@ -1,4 +1,3 @@
-import '@mocks/matchMedia.mock.test'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import { SignUpPage } from '@components/pages/SignUpPage'
@@ -17,9 +16,6 @@ const TEST_EMAIL = 'test@test.com'
 
 const server = setupServer(...authHandlers)
 
-beforeAll(() => server.listen())
-afterAll(() => server.close())
-
 const fillInput = (placeholder: string, value: string): boolean =>
   fireEvent.change(screen.getByPlaceholderText(placeholder), {
     target: { value },
@@ -33,6 +29,9 @@ const fillInputs = (): void => {
 }
 
 describe('SignUpPage', () => {
+  beforeAll(() => server.listen())
+  afterAll(() => server.close())
+
   beforeEach(() => {
     users.length = 0
     server.resetHandlers()
