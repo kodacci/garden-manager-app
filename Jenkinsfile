@@ -1,5 +1,6 @@
 def PROJECT_VERSION
 def DEPLOY_GIT_SCOPE
+def PACKAGE_NAME
 
 pipeline {
     agent { label 'jenkins-agent1' }
@@ -82,7 +83,7 @@ pipeline {
                         archiveArtifacts(logFileName)
                         sh "rm \"$logFileName\""
                     }
-                    println('Tests running finished')
+                    println 'Tests running finished'
                 }
             }
         }
@@ -93,6 +94,33 @@ pipeline {
                     nodejs(nodeJSInstallationName: 'NodeJS v22') {
                         sh 'npm run build'
                     }
+                }
+            }
+        }
+
+        stage('Deploy to Nexus Snapshots') {
+            when {
+                not {
+                    branch 'release/*'
+                }
+            }
+
+            steps {
+                script {
+                    PACKAGE_NAME = "$PROJECT_VERSION-SNAPSHOT-${currentBuild.number}"
+                    sh "zip dist ${PACKAGE_NAME}.zip"
+
+                    withCredentials([usernamePassword(
+                            credentialsId: 'vault-nexus-deployer',
+                            usernameVariable: 'USER',
+                            passwordVariable: 'PASS'
+                    )]) {
+                        sh "curl -v --user '\$user:\$pass' --upload-file ./${PACKAGE_NAME}.zip " +
+                                "$NEXUS_HOST/repository/web-ui-bundle-snapshots" +
+                                "/ru/ra-tech/garden-manager-app/$PROJECT_VERSION-SNAPSHOT/${PACKAGE_NAME}.zip"
+                    }
+
+                    println 'Deploying to nexus finished'
                 }
             }
         }
