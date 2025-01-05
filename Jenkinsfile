@@ -119,7 +119,7 @@ pipeline {
                             usernameVariable: 'USER',
                             passwordVariable: 'PASS'
                     )]) {
-                        sh "curl -v --user \$USER:\$PASS --upload-file ./${PACKAGE_NAME}.zip " +
+                        sh "curl -v --fail-with-body --user \$USER:\$PASS --upload-file ./${PACKAGE_NAME}.zip " +
                                 "$NEXUS_HOST/repository/web-ui-bundle-snapshots" +
                                 "/pro/ra-tech/garden-manager-app/$PROJECT_VERSION/${PACKAGE_NAME}.zip"
                     }
@@ -132,7 +132,7 @@ pipeline {
         stage('Build web server docker image') {
             steps {
                 script {
-                    WEB_SERVER_IMAGE_TAG = "pro.ra-tech/garden-manager-app/scope/$DEPLOY_GIT_SCOPE/" +
+                    WEB_SERVER_IMAGE_TAG = "pro.ra-tech/garden-manager-app/$DEPLOY_GIT_SCOPE/" +
                             "web-server:$PROJECT_VERSION-${currentBuild.number}"
 
                     docker.withServer(DOCKER_HOST, 'jenkins-client-cert') {
