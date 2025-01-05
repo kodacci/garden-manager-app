@@ -1,6 +1,7 @@
 def PROJECT_VERSION
 def DEPLOY_GIT_SCOPE
 def PACKAGE_NAME
+def WEB_SERVER_IMAGE_TAG
 
 pipeline {
     agent { label 'jenkins-agent1' }
@@ -20,6 +21,9 @@ pipeline {
                                         returnStdout: true,
                                         script: 'node -e "const pkg = require(\'./package.json\'); console.log(pkg.version)"'
                                 ).trim()
+                        if (!BRANCH_NAME.startsWith('release/')) {
+                            PROJECT_VERSION = PROJECT_VERSION + '-SNAPSHOT'
+                        }
                         DEPLOY_GIT_SCOPE =
                                 sh(encoding: 'UTF-8', returnStdout: true, script: 'git name-rev --name-only HEAD')
                                         .trim()
@@ -28,8 +32,8 @@ pipeline {
                                         .toLowerCase()
                     }
 
-                    echo "Project version: '${PROJECT_VERSION}'"
-                    echo "Git branch scope: '${DEPLOY_GIT_SCOPE}'"
+                    println "Project version: '$PROJECT_VERSION'"
+                    println "Git branch scope: '$DEPLOY_GIT_SCOPE'"
                 }
             }
         }
@@ -107,7 +111,7 @@ pipeline {
 
             steps {
                 script {
-                    PACKAGE_NAME = "$PROJECT_VERSION-SNAPSHOT-${currentBuild.number}"
+                    PACKAGE_NAME = "$PROJECT_VERSION-${currentBuild.number}"
                     sh "zip -r ${PACKAGE_NAME}.zip dist"
 
                     withCredentials([usernamePassword(
@@ -115,12 +119,31 @@ pipeline {
                             usernameVariable: 'USER',
                             passwordVariable: 'PASS'
                     )]) {
-                        sh "curl -v --user '\$user:\$pass' --upload-file ./${PACKAGE_NAME}.zip " +
+                        sh "curl -v --user '\$USER:\$PASS' --upload-file ./${PACKAGE_NAME}.zip " +
                                 "$NEXUS_HOST/repository/web-ui-bundle-snapshots" +
-                                "/ru/ra-tech/garden-manager-app/$PROJECT_VERSION-SNAPSHOT/${PACKAGE_NAME}.zip"
+                                "/pro/ra-tech/garden-manager-app/$PROJECT_VERSION/${PACKAGE_NAME}.zip"
                     }
 
                     println 'Deploying to nexus finished'
+                }
+            }
+        }
+
+        stage('Build web server docker image') {
+            steps {
+                script {
+                    WEB_SERVER_IMAGE_TAG = "pro.ra-tech/garden-manager-app/scope/$DEPLOY_GIT_SCOPE/" +
+                            "web-server:$PROJECT_VERSION-${currentBuild.number}"
+
+                    docker.withServer(DOCKER_HOST, 'jenkins-client-cert') {
+                        println 'Building image with tag ' + WEB_SERVER_IMAGE_TAG
+                        def image = docker.build(WEB_SERVER_IMAGE_TAG, '-f Dockerfile .')
+
+                        docker.withRegistry(SNAPSHOTS_DOCKER_REGISTRY_HOST, 'vault-nexus-deployer') {
+                            image.push()
+                            image.push('latest')
+                        }
+                    }
                 }
             }
         }
