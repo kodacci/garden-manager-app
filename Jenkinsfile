@@ -108,7 +108,7 @@ pipeline {
             steps {
                 script {
                     PACKAGE_NAME = "$PROJECT_VERSION-SNAPSHOT-${currentBuild.number}"
-                    sh "zip dist ${PACKAGE_NAME}.zip"
+                    sh "zip -r ${PACKAGE_NAME}.zip dist"
 
                     withCredentials([usernamePassword(
                             credentialsId: 'vault-nexus-deployer',
