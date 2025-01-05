@@ -119,7 +119,7 @@ pipeline {
                             usernameVariable: 'USER',
                             passwordVariable: 'PASS'
                     )]) {
-                        sh "curl -v --user '\$USER:\$PASS' --upload-file ./${PACKAGE_NAME}.zip " +
+                        sh "curl -v --user \$USER:\$PASS --upload-file ./${PACKAGE_NAME}.zip " +
                                 "$NEXUS_HOST/repository/web-ui-bundle-snapshots" +
                                 "/pro/ra-tech/garden-manager-app/$PROJECT_VERSION/${PACKAGE_NAME}.zip"
                     }
