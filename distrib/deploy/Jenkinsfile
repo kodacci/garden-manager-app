@@ -50,12 +50,12 @@ pipeline {
                         DEPLOY_NAMESPACE = 'garden-manager-app'
                         WEB_SERVER_HOST = 'garden-manager.cloud.ra-tech.pro'
                         API_HOST = 'api.garden-manager.cloud.ra-tech.pro'
-                        REGISTRY_HOST = DOCKER_REGISTRY_HOST
+                        REGISTRY_HOST = new URL(DOCKER_REGISTRY_HOST).getHost()
                     } else {
                         DEPLOY_NAMESPACE = 'garden-manager-app-test'
                         WEB_SERVER_HOST = 'garden-manager.test.cloud.ra-tech.pro'
                         API_HOST = 'api.garden-manager.test.cloud.ra-tech.pro'
-                        REGISTRY_HOST = SNAPSHOTS_DOCKER_REGISTRY_HOST
+                        REGISTRY_HOST = new URL(SNAPSHOTS_DOCKER_REGISTRY_HOST).getHost()
                     }
 
                     println "Namespace to deploy web server: $DEPLOY_NAMESPACE"
