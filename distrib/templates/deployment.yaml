@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: garden-manager-app
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: garden-manger-app
+    app.kubernetes.io/part-of: garden-manager
+    app.kubernetes.io/component: web-static
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: garden-manager-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: garden-manager-app
+    spec:
+      containers:
+        - name: garden-manager-app
+          image: {{ registry }}/{{ image_tag }}
+          ports:
+            - containerPort: 8080
+              name: web-static
+            - containerPort: 8081
+              name: health
+          readinessProbe:
+            httpGet:
+              port: 8081
+              path: /health
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              port: 8081
+              path: /health
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 10
+          resources:
+            requests:
+              cpu: 300Mi
+              memory: 200Mi
+            limits:
+              cpu: 500Mi
+              memory: 400Mi
+      imagePullSecrets:
+        - name: docker-registry-creds

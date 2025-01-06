@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: garden-manager-app-destination
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: garden-manager-app-destination
+    app.kubernetes.io/component: web-static
+    app.kubernetes.io/part-of: garden-manager
+spec:
+  host: garden-manager-app-service.{{ namespace }}.svc.cluster.local
+  exportTo:
+    - "."
+  workloadSelector:
+    matchLabels:
+      app: garden-manager-app

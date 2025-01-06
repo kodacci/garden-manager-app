@@ -147,5 +147,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Trigger deploy pipeline') {
+            steps {
+                script {
+                    def path = BRANCH_NAME.replaceAll('/', '%2F')
+                    build(
+                            job: "Garden Manager App Deploy/$path",
+                            wait: false,
+                            parameters: [
+                                    string(name: 'web_server_image', value: WEB_SERVER_IMAGE_TAG)
+                            ]
+                    )
+                }
+            }
+        }
     }
 }

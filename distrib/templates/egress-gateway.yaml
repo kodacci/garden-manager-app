@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: garden-manager-app-egress-gateway
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: garden-manager-app-egress-gateway
+    app.kubernetes.io/part-of: garden-manager
+    app.kubernetes.io/component: web-static
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+      hosts:
+        - {{ api_host }}
+    - port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      hosts:
+        - {{ api_host }}
+      tls:
+        mode: PASSTHROUGH
