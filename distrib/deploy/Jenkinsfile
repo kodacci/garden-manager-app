@@ -35,9 +35,11 @@ pipeline {
 
     stages {
         stage('Determine git scope') {
-            script {
-                DEPLOY_GIT_SCOPE = BRANCH_NAME.tokenize('/').last().toLowerCase()
-                echo "Git branch scope: '${DEPLOY_GIT_SCOPE}'"
+            steps {
+                script {
+                    DEPLOY_GIT_SCOPE = BRANCH_NAME.tokenize('/').last().toLowerCase()
+                    echo "Git branch scope: '${DEPLOY_GIT_SCOPE}'"
+                }
             }
         }
 
