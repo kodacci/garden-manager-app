@@ -26,6 +26,10 @@ def generateImageTag(container) {
     return 'pro.ra-tech/garden-manager/' + scope + '/' + container + ':latest'
 }
 
+def removeProtocol(url) {
+    return url.substring('https://'.length())
+}
+
 pipeline {
     agent { label 'jenkins-agent1' }
 
@@ -50,12 +54,12 @@ pipeline {
                         DEPLOY_NAMESPACE = 'garden-manager-app'
                         WEB_SERVER_HOST = 'garden-manager.cloud.ra-tech.pro'
                         API_HOST = 'api.garden-manager.cloud.ra-tech.pro'
-                        REGISTRY_HOST = new URL(DOCKER_REGISTRY_HOST).getHost()
+                        REGISTRY_HOST = removeProtocol(DOCKER_REGISTRY_HOST)
                     } else {
                         DEPLOY_NAMESPACE = 'garden-manager-app-test'
                         WEB_SERVER_HOST = 'garden-manager.test.cloud.ra-tech.pro'
                         API_HOST = 'api.garden-manager.test.cloud.ra-tech.pro'
-                        REGISTRY_HOST = new URL(SNAPSHOTS_DOCKER_REGISTRY_HOST).getHost()
+                        REGISTRY_HOST = removeProtocol(SNAPSHOTS_DOCKER_REGISTRY_HOST)
                     }
 
                     println "Namespace to deploy web server: $DEPLOY_NAMESPACE"
