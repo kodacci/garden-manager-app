@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: egw-destination
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: egw-destination
+    app.kubernetes.io/part-of: garden-manager
+    app.kubernetes.io/component: web-static
+spec:
+  host: istio-egressgateway.istio-system.svc.cluster.local
+  subsets:
+    - name: api
+  exportTo:
+    - "."
+    - istio-system

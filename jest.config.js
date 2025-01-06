@@ -28,7 +28,7 @@ const config = {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
-    "\\\\node_modules\\\\",
+    "node_modules",
     '<rootDir>/test'
   ],
 
@@ -41,7 +41,7 @@ const config = {
     "text",
     "html",
     // "lcov",
-    // "clover"
+    "clover"
   ],
 
   // An object that configures minimum threshold enforcement for coverage results
@@ -221,6 +221,8 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
+  testTimeout: 30000
 };
 
 module.exports = config;

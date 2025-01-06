@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: {{ name }}
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: garden-manager-app-{{ name }}-service-entry
+    app.kubernetes.io/part-of: garden-manager
+    app.kubernetes.io/component: web-static
+spec:
+  hosts:
+    - {{ host }}
+  ports:
+    - number: 80
+      name: http
+      protocol: HTTP
+    - number: 443
+      name: https
+      protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL

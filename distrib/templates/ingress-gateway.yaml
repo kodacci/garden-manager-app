@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: garden-manager-app-ingress-gateway
+  namespace: {{ namespace }}
+  labels:
+    app.kubernetes.io/name: garden-manager-app-ingress-gateway
+    app.kubernetes.io/part-of: garden-manager
+    app.kubernetes.io/component: web-static
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+      hosts:
+        - {{ host }}
