@@ -1,5 +1,16 @@
-import { MutationFunction, MutationKey } from '@tanstack/react-query'
+import {
+  MutationFunction,
+  MutationKey,
+  QueryFunction,
+  QueryKey,
+} from '@tanstack/react-query'
 import { ProblemDetail } from '@api/HttpClient'
+
+export interface QueryApiMethod<T> {
+  readonly queryKey: QueryKey
+  readonly queryFn: QueryFunction<T>
+  readonly initialData?: T
+}
 
 export interface MutationApiMethod<T, R> {
   readonly mutationKey: MutationKey

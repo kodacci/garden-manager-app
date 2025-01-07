@@ -30,4 +30,6 @@ export interface HttpClientError extends Error {
 export interface HttpClient {
   get<R>(url: string, query?: QueryParams): Promise<R>
   post<T, R>(url: string, data?: T, query?: QueryParams): Promise<R>
+  put<T, R>(url: string, data?: T, query?: QueryParams): Promise<R>
+  delete<T, R>(url: string, data?: T, query?: QueryParams): Promise<R>
 }

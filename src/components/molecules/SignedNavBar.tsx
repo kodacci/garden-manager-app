@@ -1,9 +1,13 @@
-import { FC, useCallback, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { FC, useCallback, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 import { MenuProps } from 'antd/lib'
 import { Menu } from 'antd'
 
 const items: Required<MenuProps>['items'][number][] = [
+  {
+    label: 'Home',
+    key: '',
+  },
   {
     label: 'Gardens',
     key: 'gardens',
@@ -16,11 +20,17 @@ const items: Required<MenuProps>['items'][number][] = [
 
 export const SignedNavBar: FC = () => {
   const navigate = useNavigate()
-  const [selected, setSelected] = useState('gardens')
+  const location = useLocation()
+  const [selected, setSelected] = useState([''])
+
+  useEffect(() => {
+    const key = location.pathname.substring(1)
+    setSelected([key])
+  }, [location])
 
   const onClick = useCallback<NonNullable<MenuProps['onClick']>>(
     ({ key }) => {
-      setSelected(key)
+      setSelected([key])
       void navigate(`/${key}`)
     },
     [navigate]
@@ -31,7 +41,7 @@ export const SignedNavBar: FC = () => {
       items={items}
       onClick={onClick}
       mode="horizontal"
-      selectedKeys={[selected]}
+      selectedKeys={selected}
     />
   )
 }
