@@ -9,6 +9,7 @@ import { useNotification } from '@hooks/useNotification'
 
 const StyledCard = styled(Card)`
   min-width: 400px;
+  height: 100%;
 `
 
 export const GardenCreateForm: FC = (): ReactNode => {

@@ -90,11 +90,6 @@ export class AuthService {
       return
     }
 
-    console.log(
-      'Timeout for',
-      accessPayload.exp * 1000 - now - this.timeoutPrependMs
-    )
-
     this.timer = setTimeout(
       () => this.onRefreshTimeout(),
       accessPayload.exp * 1000 - now - this.timeoutPrependMs
