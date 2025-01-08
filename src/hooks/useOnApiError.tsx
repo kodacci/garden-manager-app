@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router'
 import { HttpClientError } from '@api/HttpClient'
 import { ProblemDetailWidget } from '@components/atoms/ProblemDetailWidget'
 import { useNotification } from '@hooks/useNotification'
-import { authService } from '@context/AuthContext'
 
 export const useOnApiError = (): ((error: HttpClientError) => void) => {
   const navigate = useNavigate()
@@ -12,7 +11,6 @@ export const useOnApiError = (): ((error: HttpClientError) => void) => {
   return useCallback(
     (error: HttpClientError) => {
       if (error.problemDetail?.status === 401) {
-        authService.signOut()
         void navigate('/signout')
         return
       }

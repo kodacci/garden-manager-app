@@ -6,7 +6,7 @@ import { GardenCard } from '@components/molecules/GardenCard'
 import { GardenCreateForm } from '@components/molecules/GardenCreateForm'
 
 export const GardensPage: FC = (): ReactNode => {
-  const { isLoading, data } = useApiQuery(useApi().listGardens)
+  const { isFetching, data } = useApiQuery(useApi().listGardens)
 
   const items = useMemo<GridItem[]>(() => {
     const cards = data?.map((garden) => ({
@@ -21,5 +21,5 @@ export const GardensPage: FC = (): ReactNode => {
     return cards ?? []
   }, [data])
 
-  return <GridPage items={items ?? []} cols={2} isLoading={isLoading} />
+  return <GridPage items={items ?? []} cols={2} isLoading={isFetching} />
 }

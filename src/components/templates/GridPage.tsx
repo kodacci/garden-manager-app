@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react'
 import { styled } from 'styled-components'
-import { Col, Layout, Row, Spin } from 'antd'
+import { Col, Flex, Layout, Row, Spin } from 'antd'
 import { AppLayout } from '@components/atoms/AppLayout'
 import { AppHeader } from '@components/molecules/AppHeader'
 
 const StyledContent = styled(Layout.Content)`
+  display: flex;
   padding: 30px;
 `
 
@@ -29,15 +30,19 @@ export const GridPage: FC<GridPageProps> = ({
       <AppHeader />
       <StyledContent>
         {isLoading ? (
-          <Spin size="large" />
+          <Flex align="center" justify="center" flex="1">
+            <Spin size="large" />
+          </Flex>
         ) : (
-          <Row align="stretch" justify="center" gutter={[16, 24]}>
-            {items.map((item) => (
-              <Col span={24 / cols} key={item.id}>
-                {item.element}
-              </Col>
-            ))}
-          </Row>
+          <Flex align="start" justify="center" flex="1">
+            <Row align="stretch" justify="center" gutter={[16, 24]}>
+              {items.map((item) => (
+                <Col span={24 / cols} key={item.id}>
+                  {item.element}
+                </Col>
+              ))}
+            </Row>
+          </Flex>
         )}
       </StyledContent>
     </AppLayout>
