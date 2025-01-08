@@ -1,4 +1,3 @@
-import { StyleProvider } from '@ant-design/cssinjs'
 import { FC, PropsWithChildren, ReactNode, StrictMode } from 'react'
 import { App } from 'antd'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -16,15 +15,13 @@ export const AppContext: FC<PropsWithChildren> = ({
 }: PropsWithChildren): ReactNode => {
   return (
     <StrictMode>
-      <StyleProvider layer>
-        <QueryClientProvider client={queryClient}>
-          <AuthContext.Provider value={authService}>
-            <ApiContext.Provider value={gmApi}>
-              <App>{children}</App>
-            </ApiContext.Provider>
-          </AuthContext.Provider>
-        </QueryClientProvider>
-      </StyleProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthContext.Provider value={authService}>
+          <ApiContext.Provider value={gmApi}>
+            <App>{children}</App>
+          </ApiContext.Provider>
+        </AuthContext.Provider>
+      </QueryClientProvider>
     </StrictMode>
   )
 }
