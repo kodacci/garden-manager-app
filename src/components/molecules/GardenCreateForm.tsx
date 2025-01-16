@@ -1,7 +1,7 @@
 import { FC, ReactNode, useCallback } from 'react'
 import { Card, Form, FormProps, Input } from 'antd'
 import { styled } from 'styled-components'
-import { SubmitButton } from '@components/atoms/SubmitButton'
+import { FormButtons } from '@components/atoms/FormButtons'
 import { useApiMutation } from '@hooks/useApiMutation'
 import { useApi } from '@hooks/useApi'
 import { CreateGardenRq, Garden } from '@api/model/gardens'
@@ -56,7 +56,7 @@ export const GardenCreateForm: FC = (): ReactNode => {
         >
           <Input.TextArea placeholder="Enter garden address" />
         </Form.Item>
-        <SubmitButton name="Create" isPending={isPending} />
+        <FormButtons name="Create" isLoading={isPending} />
       </Form>
     </StyledCard>
   )

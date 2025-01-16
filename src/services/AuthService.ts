@@ -92,7 +92,7 @@ export class AuthService {
 
     this.timer = setTimeout(
       () => this.onRefreshTimeout(),
-      accessPayload.exp * 1000 - now - this.timeoutPrependMs
+      accessPayload.exp * 1000 - now + this.timeoutPrependMs
     )
 
     this.user = pick(accessPayload, 'id', 'login', 'name')

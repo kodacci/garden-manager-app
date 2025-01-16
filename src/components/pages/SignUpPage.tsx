@@ -7,7 +7,7 @@ import { useApi } from '@hooks/useApi'
 import { useUserLogin } from '@hooks/useUserLogin'
 import { PasswordFormItem } from '@components/atoms/PasswordFormItem'
 import { LoginFormItem } from '@components/atoms/LoginFormItem'
-import { SubmitButton } from '@components/atoms/SubmitButton'
+import { FormButtons } from '@components/atoms/FormButtons'
 
 export const SignUpPage: FC = (): ReactNode => {
   const createMutation = useApiMutation(useApi().createUser)
@@ -53,7 +53,7 @@ export const SignUpPage: FC = (): ReactNode => {
             <Input placeholder="Your email" />
           </Form.Item>
 
-          <SubmitButton name="Sign up" isPending={isPending} />
+          <FormButtons name="Sign up" isLoading={isPending} />
         </Form>
       </Card>
     </SingleFormPage>

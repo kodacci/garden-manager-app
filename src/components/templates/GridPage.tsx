@@ -9,6 +9,10 @@ const StyledContent = styled(Layout.Content)`
   padding: 30px;
 `
 
+const StyledRow = styled(Row)`
+  flex-grow: 1;
+`
+
 export interface GridItem {
   id: number
   element: ReactNode
@@ -35,13 +39,13 @@ export const GridPage: FC<GridPageProps> = ({
           </Flex>
         ) : (
           <Flex align="start" justify="center" flex="1">
-            <Row align="stretch" justify="center" gutter={[16, 24]}>
+            <StyledRow align="stretch" justify="center" gutter={[16, 24]}>
               {items.map((item) => (
                 <Col span={24 / cols} key={item.id}>
                   {item.element}
                 </Col>
               ))}
-            </Row>
+            </StyledRow>
           </Flex>
         )}
       </StyledContent>

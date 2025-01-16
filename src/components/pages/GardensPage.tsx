@@ -3,7 +3,6 @@ import { GridItem, GridPage } from '@components/templates/GridPage'
 import { useApiQuery } from '@hooks/useApiQuery'
 import { useApi } from '@hooks/useApi'
 import { GardenCard } from '@components/molecules/GardenCard'
-import { GardenCreateForm } from '@components/molecules/GardenCreateForm'
 
 export const GardensPage: FC = (): ReactNode => {
   const { isFetching, data } = useApiQuery(useApi().listGardens)
@@ -15,7 +14,7 @@ export const GardensPage: FC = (): ReactNode => {
     }))
 
     if (cards) {
-      cards.push({ id: -1, element: <GardenCreateForm /> })
+      cards.push({ id: -1, element: <GardenCard isCreateForm /> })
     }
 
     return cards ?? []

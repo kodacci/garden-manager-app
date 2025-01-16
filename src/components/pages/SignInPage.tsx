@@ -4,7 +4,7 @@ import { Card, Form, FormProps } from 'antd'
 import { PasswordFormItem } from '@components/atoms/PasswordFormItem'
 import { LoginFormItem } from '@components/atoms/LoginFormItem'
 import { useUserLogin } from '@hooks/useUserLogin'
-import { SubmitButton } from '@components/atoms/SubmitButton'
+import { FormButtons } from '@components/atoms/FormButtons'
 import { LoginRq } from '@api/model/auth'
 
 export const SignInPage: FC = () => {
@@ -29,7 +29,7 @@ export const SignInPage: FC = () => {
         >
           <LoginFormItem />
           <PasswordFormItem />
-          <SubmitButton name="Sign in" isPending={isPending} />
+          <FormButtons name="Sign in" isLoading={isPending} />
         </Form>
       </Card>
     </SingleFormPage>
