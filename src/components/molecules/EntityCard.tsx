@@ -18,7 +18,7 @@ export interface EntityCardProps {
   readonly title: string
   readonly onDelete: () => void
   readonly isLoading?: boolean
-  readonly canEdit?: boolean
+  readonly isNonEditable?: boolean
   readonly EditForm: FC<{ onCancel: () => void }>
   readonly View?: ReactNode
   readonly CreateForm?: ReactNode
@@ -29,6 +29,7 @@ export const EntityCard: FC<EntityCardProps> = ({
   title,
   onDelete,
   isLoading,
+  isNonEditable,
   EditForm,
   View,
   isCreateForm,
@@ -47,7 +48,7 @@ export const EntityCard: FC<EntityCardProps> = ({
     <StyledCard
       title={title}
       extra={
-        !isCreateForm ? (
+        !isCreateForm && !isNonEditable ? (
           <CardModifyButtons
             isLoading={isLoading}
             onDelete={onDelete}

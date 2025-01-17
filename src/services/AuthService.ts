@@ -104,8 +104,8 @@ export class AuthService {
     this.accessToken = accessToken
     this.refreshToken = refreshToken
 
-    localStorage.setItem('gmAccessToken', this.accessToken)
-    localStorage.setItem('gmRefreshToken', this.refreshToken)
+    localStorage.setItem(AuthService.ACCESS_TOKEN_KEY, this.accessToken)
+    localStorage.setItem(AuthService.REFRESH_TOKEN_KEY, this.refreshToken)
 
     this.validateAndExtract()
   }

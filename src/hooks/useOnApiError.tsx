@@ -33,6 +33,6 @@ export const useOnApiError = (): ((error: HttpClientError) => void) => {
         duration: 60,
       })
     },
-    [location, navigate, notification]
+    [client, location.pathname, navigate, notification]
   )
 }

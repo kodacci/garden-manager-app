@@ -8,6 +8,7 @@ import {
   GardenEditForm,
   GardenEditFormProps,
 } from '@components/molecules/GardenEditForm'
+import { useAuthUser } from '@hooks/useAuthUser'
 
 export interface GardenCardProps {
   readonly garden?: Garden
@@ -19,6 +20,7 @@ export const GardenCard: FC<GardenCardProps> = ({
   isCreateForm,
 }): ReactNode => {
   const delMutation = useApiMutation(useApi().deleteGarden)
+  const user = useAuthUser()
   const isPending = delMutation.isPending
 
   const onDelete = useCallback(() => {
@@ -40,6 +42,7 @@ export const GardenCard: FC<GardenCardProps> = ({
 
   return (
     <EntityCard
+      isNonEditable={user?.id !== garden?.owner.id}
       title={garden?.name ?? 'New garden'}
       onDelete={onDelete}
       EditForm={EditForm}

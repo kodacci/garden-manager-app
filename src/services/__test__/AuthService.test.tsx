@@ -30,7 +30,7 @@ describe('AuthService', () => {
   })
 
   it('should make refresh on access token expiration', async () => {
-    const tokens = genTokens(Math.floor(Date.now() / 1000) + 1)
+    const tokens = genTokens({ exp: Math.floor(Date.now() / 1000) + 1 })
     localStorage.setItem(AuthService.ACCESS_TOKEN_KEY, tokens.accessToken)
     localStorage.setItem(AuthService.REFRESH_TOKEN_KEY, tokens.refreshToken)
 
