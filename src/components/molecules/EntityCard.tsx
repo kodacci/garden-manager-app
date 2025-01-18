@@ -21,7 +21,6 @@ export interface EntityCardProps {
   readonly isNonEditable?: boolean
   readonly EditForm: FC<{ onCancel: () => void }>
   readonly View?: ReactNode
-  readonly CreateForm?: ReactNode
   readonly isCreateForm?: boolean
 }
 
@@ -33,7 +32,6 @@ export const EntityCard: FC<EntityCardProps> = ({
   EditForm,
   View,
   isCreateForm,
-  CreateForm,
 }): ReactNode => {
   const [mode, setMode] = useState(isCreateForm ? Mode.CREATE : Mode.VIEW)
 
@@ -57,13 +55,7 @@ export const EntityCard: FC<EntityCardProps> = ({
         ) : null
       }
     >
-      {mode === Mode.CREATE && CreateForm ? (
-        CreateForm
-      ) : mode === Mode.VIEW ? (
-        View
-      ) : (
-        <EditForm onCancel={onCancelEdit} />
-      )}
+      {mode === Mode.VIEW ? View : <EditForm onCancel={onCancelEdit} />}
     </StyledCard>
   )
 }

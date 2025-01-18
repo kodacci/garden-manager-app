@@ -69,7 +69,7 @@ export const GardenEditForm: FC<GardenEditFormProps> = ({
           { min: 3, max: 255, message: 'Length should be between 3 and 255' },
         ]}
       >
-        <Input placeholder="Enter new garde name" />
+        <Input placeholder="Enter new garden name" />
       </Form.Item>
       <Form.Item
         label="Address"

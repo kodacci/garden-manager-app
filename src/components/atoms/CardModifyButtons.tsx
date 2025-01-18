@@ -19,15 +19,17 @@ export const CardModifyButtons: FC<CardModifyBlockProps> = ({
     <Space>
       <Button
         onClick={onEdit}
-        icon={<EditOutlined />}
+        icon={<EditOutlined alt="Edit garden" />}
         loading={isLoading}
         disabled={isEditable}
+        name="Edit"
       />
       <Button
         danger
         onClick={onDelete}
-        icon={<DeleteOutlined />}
+        icon={<DeleteOutlined alt="Delete garden" />}
         loading={isLoading}
+        name="Delete"
       />
     </Space>
   )

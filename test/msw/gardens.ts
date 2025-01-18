@@ -7,7 +7,7 @@ export const testGardens: Garden[] = []
 
 export const testOwner: User = { id: 1, login: 'testOwner', name: 'Test Owner' }
 export const testParticipant: User = {
-  id: 1,
+  id: 2,
   login: 'testParticipant',
   name: 'Test Participant',
 }
@@ -45,7 +45,7 @@ export const gardensHandlers = [
         participants: [{ ...testParticipant, role: GardenRole.EXECUTOR }],
       }
       const idx = testGardens.findIndex((item) => item.id === id)
-      if (idx) {
+      if (idx > -1) {
         testGardens.splice(idx, 1, garden)
       }
 

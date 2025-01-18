@@ -1,5 +1,1004 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GardensPage should be able to create new garden with create form: create new garden 1`] = `
+<div>
+  <div
+    class="css-dev-only-do-not-override-161f05s ant-app"
+  >
+    <div
+      class="ant-layout sc-blHHSb eyefDO css-dev-only-do-not-override-161f05s"
+    >
+      <header
+        class="ant-layout-header sc-gtLWhw cCbFCb css-dev-only-do-not-override-161f05s"
+      >
+        <div
+          class="sc-egkSDF dXFjag"
+        >
+          <ul
+            class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light css-dev-only-do-not-override-161f05s"
+            data-menu-list="true"
+            role="menu"
+            tabindex="0"
+          >
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-selected ant-menu-item-only-child"
+              data-menu-id="rc-menu-uuid-test-"
+              role="menuitem"
+              style="opacity: 1; order: 0;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Home
+              </span>
+            </li>
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+              role="menuitem"
+              style="opacity: 1; order: 1;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Gardens
+              </span>
+            </li>
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+              role="menuitem"
+              style="opacity: 1; order: 2;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Sign out
+              </span>
+            </li>
+            <li
+              aria-hidden="true"
+              class="ant-menu-overflow-item ant-menu-overflow-item-rest ant-menu-submenu ant-menu-submenu-horizontal"
+              role="none"
+              style="opacity: 0; height: 0px; overflow-y: hidden; order: 9007199254740991; pointer-events: none; position: absolute;"
+            >
+              <div
+                aria-controls="rc-menu-uuid-test-rc-menu-more-popup"
+                aria-expanded="false"
+                aria-haspopup="true"
+                class="ant-menu-submenu-title"
+                data-menu-id="rc-menu-uuid-test-rc-menu-more"
+                role="menuitem"
+                tabindex="-1"
+              >
+                <span
+                  aria-label="ellipsis"
+                  class="anticon anticon-ellipsis"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="ellipsis"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                    />
+                  </svg>
+                </span>
+                <i
+                  class="ant-menu-submenu-arrow"
+                />
+              </div>
+            </li>
+          </ul>
+          <div
+            aria-hidden="true"
+            style="display: none;"
+          />
+        </div>
+      </header>
+      <main
+        class="ant-layout-content sc-fAUdSK fFGTk css-dev-only-do-not-override-161f05s"
+      >
+        <div
+          class="ant-flex css-dev-only-do-not-override-161f05s ant-flex-align-start ant-flex-justify-center"
+          style="flex: 1;"
+        >
+          <div
+            class="ant-row ant-row-center ant-row-stretch sc-dntaoT hBZaOE css-dev-only-do-not-override-161f05s"
+            style="margin-left: -8px; margin-right: -8px; row-gap: 24px;"
+          >
+            <div
+              class="ant-col ant-col-12 css-dev-only-do-not-override-161f05s"
+              style="padding-left: 8px; padding-right: 8px;"
+            >
+              <div
+                class="ant-card ant-card-bordered sc-ivxoEo gNlwfO css-dev-only-do-not-override-161f05s"
+              >
+                <div
+                  class="ant-card-head"
+                >
+                  <div
+                    class="ant-card-head-wrapper"
+                  >
+                    <div
+                      class="ant-card-head-title"
+                    >
+                      Test garden
+                    </div>
+                    <div
+                      class="ant-card-extra"
+                    >
+                      <div
+                        class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                      >
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Edit"
+                            type="button"
+                          >
+                            <span
+                              class="ant-btn-icon"
+                            >
+                              <span
+                                alt="Edit garden"
+                                aria-label="edit"
+                                class="anticon anticon-edit"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="edit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Delete"
+                            type="button"
+                          >
+                            <span
+                              class="ant-btn-icon"
+                            >
+                              <span
+                                alt="Delete garden"
+                                aria-label="delete"
+                                class="anticon anticon-delete"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="delete"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-card-body"
+                >
+                  <div
+                    class="ant-descriptions ant-descriptions-bordered css-dev-only-do-not-override-161f05s"
+                  >
+                    <div
+                      class="ant-descriptions-view"
+                    >
+                      <table>
+                        <tbody>
+                          <tr
+                            class="ant-descriptions-row"
+                          >
+                            <th
+                              class="ant-descriptions-item-label"
+                              colspan="1"
+                            >
+                              <span>
+                                Address
+                              </span>
+                            </th>
+                            <td
+                              class="ant-descriptions-item-content"
+                              colspan="1"
+                            >
+                              <span>
+                                Test garden address
+                              </span>
+                            </td>
+                          </tr>
+                          <tr
+                            class="ant-descriptions-row"
+                          >
+                            <th
+                              class="ant-descriptions-item-label"
+                              colspan="1"
+                            >
+                              <span>
+                                Owner
+                              </span>
+                            </th>
+                            <td
+                              class="ant-descriptions-item-content"
+                              colspan="1"
+                            >
+                              <span>
+                                <div
+                                  class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                                >
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <span
+                                      class="ant-tag ant-tag-green css-dev-only-do-not-override-161f05s"
+                                    >
+                                      Test Owner
+                                    </span>
+                                  </div>
+                                </div>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr
+                            class="ant-descriptions-row"
+                          >
+                            <th
+                              class="ant-descriptions-item-label"
+                              colspan="1"
+                            >
+                              <span>
+                                Participants
+                              </span>
+                            </th>
+                            <td
+                              class="ant-descriptions-item-content"
+                              colspan="1"
+                            >
+                              <span>
+                                <div
+                                  class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-large ant-space-gap-col-large"
+                                >
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <div
+                                      class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                                    >
+                                      <div
+                                        class="ant-space-item"
+                                      >
+                                        <span
+                                          class="ant-typography css-dev-only-do-not-override-161f05s"
+                                        >
+                                          <kbd>
+                                            Test Participant
+                                          </kbd>
+                                        </span>
+                                      </div>
+                                      <div
+                                        class="ant-space-item"
+                                      >
+                                        <span
+                                          class="ant-tag ant-tag-purple css-dev-only-do-not-override-161f05s"
+                                        >
+                                          EXECUTOR
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-col ant-col-12 css-dev-only-do-not-override-161f05s"
+              style="padding-left: 8px; padding-right: 8px;"
+            >
+              <div
+                class="ant-card ant-card-bordered sc-ivxoEo gNlwfO css-dev-only-do-not-override-161f05s"
+              >
+                <div
+                  class="ant-card-head"
+                >
+                  <div
+                    class="ant-card-head-wrapper"
+                  >
+                    <div
+                      class="ant-card-head-title"
+                    >
+                      New garden
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-card-body"
+                >
+                  <form
+                    class="ant-form ant-form-horizontal css-dev-only-do-not-override-161f05s"
+                    id="create-garden"
+                  >
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s ant-form-item-has-success"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="create-garden_name"
+                            title="Name"
+                          >
+                            Name
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined ant-input-status-success"
+                                id="create-garden_name"
+                                placeholder="Enter new garden name"
+                                type="text"
+                                value="Test garden"
+                              />
+                            </div>
+                          </div>
+                          <div
+                            class="ant-form-item-additional"
+                            style="min-height: 24px;"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="ant-form-item-margin-offset"
+                        style="margin-bottom: -24px;"
+                      />
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s ant-form-item-has-success"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class=""
+                            for="create-garden_address"
+                            title="Address"
+                          >
+                            Address
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <textarea
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined ant-input-status-success"
+                                id="create-garden_address"
+                                placeholder="Enter garden address"
+                              >
+                                Test garden address
+                              </textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-16 ant-col-offset-8 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <div
+                                class="ant-flex css-dev-only-do-not-override-161f05s ant-flex-justify-flex-end"
+                              >
+                                <div
+                                  class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                                >
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <button
+                                      class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+                                      type="submit"
+                                    >
+                                      <span>
+                                        Create
+                                      </span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GardensPage should be able to edit garden data: garden edit card in edit mode 1`] = `
+<div>
+  <div
+    class="css-dev-only-do-not-override-161f05s ant-app"
+  >
+    <div
+      class="ant-layout sc-blHHSb eyefDO css-dev-only-do-not-override-161f05s"
+    >
+      <header
+        class="ant-layout-header sc-gtLWhw cCbFCb css-dev-only-do-not-override-161f05s"
+      >
+        <div
+          class="sc-egkSDF dXFjag"
+        >
+          <ul
+            class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light css-dev-only-do-not-override-161f05s"
+            data-menu-list="true"
+            role="menu"
+            tabindex="0"
+          >
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-selected ant-menu-item-only-child"
+              data-menu-id="rc-menu-uuid-test-"
+              role="menuitem"
+              style="opacity: 1; order: 0;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Home
+              </span>
+            </li>
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+              role="menuitem"
+              style="opacity: 1; order: 1;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Gardens
+              </span>
+            </li>
+            <li
+              class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+              role="menuitem"
+              style="opacity: 1; order: 2;"
+              tabindex="-1"
+            >
+              <span
+                class="ant-menu-title-content"
+              >
+                Sign out
+              </span>
+            </li>
+            <li
+              aria-hidden="true"
+              class="ant-menu-overflow-item ant-menu-overflow-item-rest ant-menu-submenu ant-menu-submenu-horizontal"
+              role="none"
+              style="opacity: 0; height: 0px; overflow-y: hidden; order: 9007199254740991; pointer-events: none; position: absolute;"
+            >
+              <div
+                aria-controls="rc-menu-uuid-test-rc-menu-more-popup"
+                aria-expanded="false"
+                aria-haspopup="true"
+                class="ant-menu-submenu-title"
+                data-menu-id="rc-menu-uuid-test-rc-menu-more"
+                role="menuitem"
+                tabindex="-1"
+              >
+                <span
+                  aria-label="ellipsis"
+                  class="anticon anticon-ellipsis"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="ellipsis"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                    />
+                  </svg>
+                </span>
+                <i
+                  class="ant-menu-submenu-arrow"
+                />
+              </div>
+            </li>
+          </ul>
+          <div
+            aria-hidden="true"
+            style="display: none;"
+          />
+        </div>
+      </header>
+      <main
+        class="ant-layout-content sc-fAUdSK fFGTk css-dev-only-do-not-override-161f05s"
+      >
+        <div
+          class="ant-flex css-dev-only-do-not-override-161f05s ant-flex-align-start ant-flex-justify-center"
+          style="flex: 1;"
+        >
+          <div
+            class="ant-row ant-row-center ant-row-stretch sc-dntaoT hBZaOE css-dev-only-do-not-override-161f05s"
+            style="margin-left: -8px; margin-right: -8px; row-gap: 24px;"
+          >
+            <div
+              class="ant-col ant-col-12 css-dev-only-do-not-override-161f05s"
+              style="padding-left: 8px; padding-right: 8px;"
+            >
+              <div
+                class="ant-card ant-card-bordered sc-ivxoEo gNlwfO css-dev-only-do-not-override-161f05s"
+              >
+                <div
+                  class="ant-card-head"
+                >
+                  <div
+                    class="ant-card-head-wrapper"
+                  >
+                    <div
+                      class="ant-card-head-title"
+                    >
+                      Test garden
+                    </div>
+                    <div
+                      class="ant-card-extra"
+                    >
+                      <div
+                        class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                      >
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Edit"
+                            type="button"
+                          >
+                            <span
+                              class="ant-btn-icon"
+                            >
+                              <span
+                                alt="Edit garden"
+                                aria-label="edit"
+                                class="anticon anticon-edit"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="edit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Delete"
+                            type="button"
+                          >
+                            <span
+                              class="ant-btn-icon"
+                            >
+                              <span
+                                alt="Delete garden"
+                                aria-label="delete"
+                                class="anticon anticon-delete"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="delete"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-card-body"
+                >
+                  <form
+                    class="ant-form ant-form-horizontal css-dev-only-do-not-override-161f05s"
+                    id="edit-garden-1"
+                  >
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="edit-garden-1_name"
+                            title="Name"
+                          >
+                            Name
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined"
+                                id="edit-garden-1_name"
+                                placeholder="Enter new garden name"
+                                type="text"
+                                value="Test garden"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class=""
+                            for="edit-garden-1_address"
+                            title="Address"
+                          >
+                            Address
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <textarea
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined"
+                                id="edit-garden-1_address"
+                                placeholder="Enter garden address"
+                              >
+                                Test address
+                              </textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-16 ant-col-offset-8 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <div
+                                class="ant-flex css-dev-only-do-not-override-161f05s ant-flex-justify-flex-end"
+                              >
+                                <div
+                                  class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                                >
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <button
+                                      class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-dashed ant-btn-color-default ant-btn-variant-dashed"
+                                      type="button"
+                                    >
+                                      <span>
+                                        Cancel
+                                      </span>
+                                    </button>
+                                  </div>
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <button
+                                      class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+                                      type="submit"
+                                    >
+                                      <span>
+                                        Save
+                                      </span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-col ant-col-12 css-dev-only-do-not-override-161f05s"
+              style="padding-left: 8px; padding-right: 8px;"
+            >
+              <div
+                class="ant-card ant-card-bordered sc-ivxoEo gNlwfO css-dev-only-do-not-override-161f05s"
+              >
+                <div
+                  class="ant-card-head"
+                >
+                  <div
+                    class="ant-card-head-wrapper"
+                  >
+                    <div
+                      class="ant-card-head-title"
+                    >
+                      New garden
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-card-body"
+                >
+                  <form
+                    class="ant-form ant-form-horizontal css-dev-only-do-not-override-161f05s"
+                    id="create-garden"
+                  >
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="create-garden_name"
+                            title="Name"
+                          >
+                            Name
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined"
+                                id="create-garden_name"
+                                placeholder="Enter new garden name"
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-8 ant-form-item-label css-dev-only-do-not-override-161f05s"
+                        >
+                          <label
+                            class=""
+                            for="create-garden_address"
+                            title="Address"
+                          >
+                            Address
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-16 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <textarea
+                                class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined"
+                                id="create-garden_address"
+                                placeholder="Enter garden address"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item css-dev-only-do-not-override-161f05s"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row css-dev-only-do-not-override-161f05s"
+                      >
+                        <div
+                          class="ant-col ant-col-16 ant-col-offset-8 ant-form-item-control css-dev-only-do-not-override-161f05s"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <div
+                                class="ant-flex css-dev-only-do-not-override-161f05s ant-flex-justify-flex-end"
+                              >
+                                <div
+                                  class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+                                >
+                                  <div
+                                    class="ant-space-item"
+                                  >
+                                    <button
+                                      class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+                                      type="submit"
+                                    >
+                                      <span>
+                                        Create
+                                      </span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`GardensPage should list all user gardens: list all gardens 1`] = `
 <div>
   <div
@@ -143,12 +1142,14 @@ exports[`GardensPage should list all user gardens: list all gardens 1`] = `
                         >
                           <button
                             class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Edit"
                             type="button"
                           >
                             <span
                               class="ant-btn-icon"
                             >
                               <span
+                                alt="Edit garden"
                                 aria-label="edit"
                                 class="anticon anticon-edit"
                                 role="img"
@@ -175,12 +1176,14 @@ exports[`GardensPage should list all user gardens: list all gardens 1`] = `
                         >
                           <button
                             class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-icon-only"
+                            name="Delete"
                             type="button"
                           >
                             <span
                               class="ant-btn-icon"
                             >
                               <span
+                                alt="Delete garden"
                                 aria-label="delete"
                                 class="anticon anticon-delete"
                                 role="img"
@@ -345,78 +1348,6 @@ exports[`GardensPage should list all user gardens: list all gardens 1`] = `
                     >
                       Other user garden
                     </div>
-                    <div
-                      class="ant-card-extra"
-                    >
-                      <div
-                        class="ant-space css-dev-only-do-not-override-161f05s ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
-                      >
-                        <div
-                          class="ant-space-item"
-                        >
-                          <button
-                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
-                            type="button"
-                          >
-                            <span
-                              class="ant-btn-icon"
-                            >
-                              <span
-                                aria-label="edit"
-                                class="anticon anticon-edit"
-                                role="img"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="edit"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
-                                  />
-                                </svg>
-                              </span>
-                            </span>
-                          </button>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                        >
-                          <button
-                            class="ant-btn css-dev-only-do-not-override-161f05s ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-icon-only"
-                            type="button"
-                          >
-                            <span
-                              class="ant-btn-icon"
-                            >
-                              <span
-                                aria-label="delete"
-                                class="anticon anticon-delete"
-                                role="img"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="delete"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
-                                  />
-                                </svg>
-                              </span>
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div
@@ -472,11 +1403,7 @@ exports[`GardensPage should list all user gardens: list all gardens 1`] = `
                                   <div
                                     class="ant-space-item"
                                   >
-                                    <span
-                                      class="ant-tag ant-tag-green css-dev-only-do-not-override-161f05s"
-                                    >
-                                      Test Participant
-                                    </span>
+                                    Test Participant
                                   </div>
                                 </div>
                               </span>
@@ -597,7 +1524,7 @@ exports[`GardensPage should list all user gardens: list all gardens 1`] = `
                                 aria-required="true"
                                 class="ant-input css-dev-only-do-not-override-161f05s ant-input-outlined"
                                 id="create-garden_name"
-                                placeholder="Enter new garde name"
+                                placeholder="Enter new garden name"
                                 type="text"
                                 value=""
                               />
