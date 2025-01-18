@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -41,6 +42,21 @@ module.exports = {
       title: 'Garden Manager',
       template: 'assets/index.ejs',
     }),
+    new FaviconsWebpackPlugin({
+      logo: 'assets/favicon.png',
+      favicons: {
+        appName: 'Garden Manager',
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          appleTouch: false,
+          favicons: true,
+          windows: false,
+          yandex: true,
+        }
+      }
+    }),
   ],
   devServer: {
     static: {
@@ -49,13 +65,15 @@ module.exports = {
     compress: true,
     port: 8080,
     historyApiFallback: true,
-    proxy: [{
-      context: ['/api'],
-      target: 'https://garden-manager.test.cloud.ra-tech.pro',
-      headers: {
-        'host': 'garden-manager.test.cloud.ra-tech.pro',
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'https://garden-manager.test.cloud.ra-tech.pro',
+        headers: {
+          host: 'garden-manager.test.cloud.ra-tech.pro',
+        },
+        secure: false,
       },
-      secure: false,
-    }],
+    ],
   },
 }
