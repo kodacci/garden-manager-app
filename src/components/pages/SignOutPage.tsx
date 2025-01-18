@@ -4,11 +4,12 @@ import { useSignOut } from '@hooks/useSignOut'
 
 export const SignOutPage: FC = () => {
   const navigate = useNavigate()
-  useSignOut()
+  const signout = useSignOut()
 
   useEffect(() => {
+    signout()
     void navigate('/signin')
-  }, [navigate])
+  }, [navigate, signout])
 
   return null
 }

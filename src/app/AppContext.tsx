@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren, ReactNode, StrictMode } from 'react'
+import { App } from 'antd'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthContext, authService } from '@context/AuthContext'
 import { ApiContext } from '@context/ApiContext'
 import { FetchHttpClient } from '@api/FetchHttpClient'
 import { api } from '@api/api'
-import { App } from 'antd'
 
 const queryClient = new QueryClient()
 const httpClient = new FetchHttpClient(authService)

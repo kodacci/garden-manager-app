@@ -90,14 +90,9 @@ export class AuthService {
       return
     }
 
-    console.log(
-      'Timeout for',
-      accessPayload.exp * 1000 - now - this.timeoutPrependMs
-    )
-
     this.timer = setTimeout(
       () => this.onRefreshTimeout(),
-      accessPayload.exp * 1000 - now - this.timeoutPrependMs
+      accessPayload.exp * 1000 - now + this.timeoutPrependMs
     )
 
     this.user = pick(accessPayload, 'id', 'login', 'name')
@@ -109,8 +104,8 @@ export class AuthService {
     this.accessToken = accessToken
     this.refreshToken = refreshToken
 
-    localStorage.setItem('gmAccessToken', this.accessToken)
-    localStorage.setItem('gmRefreshToken', this.refreshToken)
+    localStorage.setItem(AuthService.ACCESS_TOKEN_KEY, this.accessToken)
+    localStorage.setItem(AuthService.REFRESH_TOKEN_KEY, this.refreshToken)
 
     this.validateAndExtract()
   }
