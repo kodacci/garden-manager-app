@@ -1,7 +1,7 @@
 host: garden-manager.test.cloud.ra-tech.pro
 api_host: api.garden-manager.test.cloud.ra-tech.pro
 namespace: garden-manager-app-test
-registry: snapshots.docker.ra-tech.pro
+registry: snapshots.docker-registry.ra-tech.pro
 
 egress:
   requests:
