@@ -35,6 +35,19 @@ static def removeProtocol(url) {
     return url.substring('https://'.length())
 }
 
+def escapeMd(input, escapeChars) {
+    def builder = new StringBuilder()
+
+    input.each { ch ->
+        if (escapeChars.contains(ch)) {
+            builder.append('\\')
+        }
+        builder.append(ch)
+    }
+
+    return builder.toString()
+}
+
 pipeline {
     agent { label 'jenkins-agent1' }
 
@@ -46,6 +59,9 @@ pipeline {
         stage('Determine git scope') {
             steps {
                 script {
+                    ESCAPED_JOB_NAME = escapeMd(JOB_NAME, MARKDOWN_ESCAPE_CHARS)
+                    raTechNotify(message: "🚀 Job *${ESCAPED_JOB_NAME}* started [BUILD](${BUILD_URL}) 🚀", markdown: true)
+
                     DEPLOY_GIT_SCOPE = BRANCH_NAME.tokenize('/').last().toLowerCase()
                     echo "Git branch scope: '${DEPLOY_GIT_SCOPE}'"
                 }
@@ -184,4 +200,21 @@ pipeline {
             }
         }
     }
+    post {
+            success {
+                script{
+                    raTechNotify(message: "✅ Job *${ESCAPED_JOB_NAME}* completed successfully [BUILD](${BUILD_URL}) ✅", markdown: true)
+                }
+            }
+            failure {
+                script {
+                    raTechNotify(message: "❌ Job *${ESCAPED_JOB_NAME}* failed [BUILD](${BUILD_URL}) ❌", markdown: true)
+                }
+            }
+            aborted {
+                script {
+                    raTechNotify(message: "✋ Job *${ESCAPED_JOB_NAME}* aborted [BUILD](${BUILD_URL}) ✋", markdown: true)
+                }
+            }
+        }
 }

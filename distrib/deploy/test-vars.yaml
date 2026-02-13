@@ -25,6 +25,13 @@ web_static:
   limits:
     cpu: 200m
     memory: 256Mi
+  istio:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
 
 vault:
   tls_url: https://vault.ra-tech.pro

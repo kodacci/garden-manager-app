@@ -12,12 +12,24 @@ spec:
   selector:
     matchLabels:
       app: garden-manager-app
+      app.kubernetes.io/name: garden-manager-app
+      app.kubernetes.io/component: web-static
+      app.kubernetes.io/part-of: garden-manager
+      app.network.policy: restricted
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: garden-manager-app
+        app.kubernetes.io/name: garden-manager-app
+        app.kubernetes.io/component: web-static
+        app.kubernetes.io/part-of: garden-manager
+        app.network.policy: restricted
+        sidecar.istio.io/proxyCPU: {{ core.istio.requests.cpu }}
+        sidecar.istio.io/proxyCPULimit: {{ core.istio.limits.cpu }}
+        sidecar.istio.io/proxyMemory: {{ core.istio.requests.memory }}
+        sidecar.istio.io/proxyMemoryLimit: {{ core.istio.limits.memory }}
     spec:
       containers:
         - name: garden-manager-app
