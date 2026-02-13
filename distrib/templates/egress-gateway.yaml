@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/component: web-static
 spec:
   selector:
-    istio: egressgateway
+    istio: {{ namespace }}-egressgateway
   servers:
     - port:
         name: http
