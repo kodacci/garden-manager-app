@@ -26,10 +26,10 @@ spec:
         app.kubernetes.io/component: web-static
         app.kubernetes.io/part-of: garden-manager
         app.network.policy: restricted
-        sidecar.istio.io/proxyCPU: {{ core.istio.requests.cpu }}
-        sidecar.istio.io/proxyCPULimit: {{ core.istio.limits.cpu }}
-        sidecar.istio.io/proxyMemory: {{ core.istio.requests.memory }}
-        sidecar.istio.io/proxyMemoryLimit: {{ core.istio.limits.memory }}
+        sidecar.istio.io/proxyCPU: {{ web_static.istio.requests.cpu }}
+        sidecar.istio.io/proxyCPULimit: {{ web_static.istio.limits.cpu }}
+        sidecar.istio.io/proxyMemory: {{ web_static.istio.requests.memory }}
+        sidecar.istio.io/proxyMemoryLimit: {{ web_static.istio.limits.memory }}
     spec:
       containers:
         - name: garden-manager-app

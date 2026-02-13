@@ -5,7 +5,7 @@ metadata:
   namespace: {{ namespace }}
   labels:
     app.kubernetes.io/part-of: garden-manager
-    app.kubernetes.io/component: core
+    app.kubernetes.io/component: web-static
 spec:
   podSelector:
     matchLabels:

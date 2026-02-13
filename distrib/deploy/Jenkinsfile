@@ -110,7 +110,7 @@ pipeline {
                         sh "kubectl delete destinationrule -l app.kubernetes.io/component=web-static -n $namespace"
                         sh "kubectl delete gateway -l app.kubernetes.io/component=web-static -n $namespace"
                         sh "kubectl delete networkpolicy -l app.kubernetes.io/component=web-static -n $namespace"
-                        sh "kubectl delete configmap -l app.kubernetes.io/component=core -n $namespace"
+                        sh "kubectl delete configmap -l app.kubernetes.io/component=web-static -n $namespace"
                         sh "kubectl delete serviceentry -l app.kubernetes.io/component=web-static -n $namespace"
 
                         println "Deleting istio components"

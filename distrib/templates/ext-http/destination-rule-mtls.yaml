@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: websites-watcher-{{ name }}-destination-rule
     app.kubernetes.io/part-of: websites-watcher
-    app.kubernetes.io/component: core
+    app.kubernetes.io/component: web-static
 spec:
   host: {{ host }}
   trafficPolicy:

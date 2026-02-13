@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: egress-vault-agent-config
     app.kubernetes.io/part-of: websites-watcher
-    app.kubernetes.io/component: core
+    app.kubernetes.io/component: web-static
 data:
   vault-agent-config.hcl: |
     exit_after_auth = false
