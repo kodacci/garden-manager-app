@@ -12,10 +12,12 @@ spec:
   trafficPolicy:
     portLevelSettings:
       - port:
-          number: 443
+          number: {{ ext_https_port }}
         tls:
           mode: SIMPLE
           sni: {{ host }}
+  workloadSelector:
+    matchLabels:
+      istio: {{ namespace }}-egressgateway
   exportTo:
     - "."
-    - istio-system
