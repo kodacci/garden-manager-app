@@ -2,6 +2,7 @@ def PROJECT_VERSION
 def DEPLOY_GIT_SCOPE
 def PACKAGE_NAME
 def WEB_SERVER_IMAGE_TAG
+def ESCAPED_JOB_NAME
 
 def escapeMd(input, escapeChars) {
     def builder = new StringBuilder()

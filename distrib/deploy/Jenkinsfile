@@ -4,6 +4,7 @@ def WEB_SERVER_HOST
 def API_HOST
 def REGISTRY_HOST
 def JINJA2_VARS_FILE_PATH
+def ESCAPED_JOB_NAME
 
 def generateExtHttp(name, host, extHttpsPort, varsPath, useMtls) {
     sh "jinja2 -D name=$name -D host=$host -Dext_https_port=$extHttpsPort distrib/templates/ext-http/service-entry.yaml $varsPath > distrib/${name}-service-entry.yaml"
