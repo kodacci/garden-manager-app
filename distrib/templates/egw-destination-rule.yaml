@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: garden-manager
     app.kubernetes.io/component: web-static
 spec:
-  host: garden-manager-app-egressgateway.{{ namespace }}.svc.cluster.local
+  host: garden-manager-app-egressgw.{{ namespace }}.svc.cluster.local
   subsets:
     - name: api
   exportTo:
