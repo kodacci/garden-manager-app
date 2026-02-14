@@ -22,7 +22,7 @@ spec:
           port: 80
         route:
           - destination:
-              host: garden-manager-app-egressgateway.{{ namespace }}.svc.cluster.local
+              host: garden-manager-app-egressgw.{{ namespace }}.svc.cluster.local
               subset: {{ name }}
               port:
                 number: 80
