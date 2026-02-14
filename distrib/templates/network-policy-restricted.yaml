@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: garden-manager-app-network-policy
+  name: restricted-network-policy
   namespace: {{ namespace }}
   labels:
-    app.kubernetes.io/name: garden-manager-app-network-policy
     app.kubernetes.io/part-of: garden-manager
     app.kubernetes.io/component: web-static
 spec:
   podSelector:
-    {}
+    matchLabels:
+      app.network.policy: restricted
   policyTypes:
     - Ingress
     - Egress
@@ -28,7 +28,10 @@ spec:
               kubernetes.io/metadata.name: {{ namespace }}
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: istio-system
+              kubernetes.io/metadata.name: kube-system
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: kube-system
+              kubernetes.io/metadata.name: istio-system
+        - podSelector:
+            matchLabels:
+              istio: {{ namespace }}-egressgateway

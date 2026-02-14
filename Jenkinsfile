@@ -2,9 +2,24 @@ def PROJECT_VERSION
 def DEPLOY_GIT_SCOPE
 def PACKAGE_NAME
 def WEB_SERVER_IMAGE_TAG
+def ESCAPED_JOB_NAME
+def MARKDOWN_ESCAPE_CHARS = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'] as Set
+
+def escapeMd(input, escapeChars) {
+    def builder = new StringBuilder()
+
+    input.each { ch ->
+        if (escapeChars.contains(ch)) {
+            builder.append('\\')
+        }
+        builder.append(ch)
+    }
+
+    return builder.toString()
+}
 
 pipeline {
-    agent { label 'jenkins-agent1' }
+    agent { label 'linux' }
 
     options {
         ansiColor('xterm')
@@ -14,6 +29,9 @@ pipeline {
         stage('Determine version') {
             steps {
                 script {
+                    ESCAPED_JOB_NAME = escapeMd(JOB_NAME, MARKDOWN_ESCAPE_CHARS)
+                    raTechNotify(message: "🚀 Job *${ESCAPED_JOB_NAME}* started [BUILD](${BUILD_URL}) 🚀", markdown: true)
+
                     nodejs(nodeJSInstallationName: 'NodeJS v22') {
                         PROJECT_VERSION =
                                 sh(
@@ -160,6 +178,23 @@ pipeline {
                             ]
                     )
                 }
+            }
+        }
+    }
+    post {
+        success {
+            script{
+                raTechNotify(message: "✅ Job *${ESCAPED_JOB_NAME}* completed successfully [BUILD](${BUILD_URL}) ✅", markdown: true)
+            }
+        }
+        failure {
+            script {
+                raTechNotify(message: "❌ Job *${ESCAPED_JOB_NAME}* failed [BUILD](${BUILD_URL}) ❌", markdown: true)
+            }
+        }
+        aborted {
+            script {
+                raTechNotify(message: "✋ Job *${ESCAPED_JOB_NAME}* aborted [BUILD](${BUILD_URL}) ✋", markdown: true)
             }
         }
     }
